@@ -13,7 +13,7 @@ export default function Intro() {
   const y = useTransform(scrollYProgress, [0, 1], ["0vh", "150vh"]);
 
   return (
-    <div className="lg:h-[90vh] h-[60vh] overflow-hidden">
+    <div className="lg:h-[90vh] h-[70vh] overflow-hidden">
       <motion.div
         style={{ y }}
         className="relative h-full bg-[radial-gradient(circle_at_bottom_right,_#004E63_0%,_#030303_80%)]"
