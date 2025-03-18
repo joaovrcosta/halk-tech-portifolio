@@ -18,7 +18,7 @@ export default function Section() {
       <div className="lg:p-20 p-8 w-full space-y-10">
         <h2 className="lg:text-6xl text-4xl ">Technologies I work with</h2>
         <div className="border-b my-4"></div>
-        <div className="w-[50%]">
+        <div className="lg:w-[50%]">
           <div className="px-1 py-3 mb-3 border-b  border-[#000]">
             <h4 className="text-2xl whitespace-nowrap">Design & Animation</h4>
           </div>
