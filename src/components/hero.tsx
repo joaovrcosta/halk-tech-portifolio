@@ -11,19 +11,19 @@ export function Hero() {
           <div className="max-w-[754px] lg:mt-60 mt-36">
             <div className="lg:block hidden">
               <motion.h1
-                className="lg:text-[64px] text-white font-poppins text-center leading-12 text-center"
+                className="lg:text-[64px] text-white font-poppins text-center leading-12 "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5 }}
               >
-                Cresca sua marca{" "}
+                Grow your brand
                 <motion.span
                   className="lg:text-[96px] text-center italic bg-gradient-to-br from-[#00C8FF] to-[#004E63] bg-clip-text text-transparent"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1.5, delay: 0.5 }} // Delay para dar um efeito mais interessante
                 >
-                  pense diferente
+                  think different
                 </motion.span>
               </motion.h1>
             </div>
@@ -34,7 +34,7 @@ export function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5 }}
               >
-                Cresca sua marca{" "}
+                Grow your brand
               </motion.h1>
               <motion.span
                 className="lg:text-[96px] text-[42px] text-center italic bg-gradient-to-br from-[#00C8FF] to-[#004E63] bg-clip-text text-transparent"
@@ -42,20 +42,20 @@ export function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, delay: 0.25 }}
               >
-                pense diferente
+                think different
               </motion.span>
             </div>
           </div>
-          <div className="lg:max-w-[450px] w-full max-w-[300px] text-[#b6b6b6] mt-6">
+          <div className="lg:max-w-[520px] w-full max-w-[300px] text-[#b6b6b6] mt-6">
             <motion.p
               className="text-center lg:text-[16px] text-[12px] px-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.5 }}
             >
-              Mais do que apenas um design bonito, criamos experiências que
-              convertem visitantes em clientes. Seu site não pode ser só um
-              cartão de visitas – ele precisa vender por você.
+              More than just a beautiful design, we create experiences that
+              convert visitors into customers. Your website can’t just be a
+              business card – it needs to do the selling for you.
             </motion.p>
           </div>
           <div className="flex space-x-6">

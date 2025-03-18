@@ -16,7 +16,7 @@ export default function Intro() {
     <div className="lg:h-[90vh] h-[70vh] overflow-hidden">
       <motion.div
         style={{ y }}
-        className="relative h-full bg-[radial-gradient(circle_at_bottom_right,_#004E63_0%,_#030303_80%)]"
+        className="relative h-full bg-[radial-gradient(circle_at_bottom_right,_#5F5F5F_0%,_#030303_80%)]"
       >
         <Hero />
       </motion.div>

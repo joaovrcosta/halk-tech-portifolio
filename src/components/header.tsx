@@ -27,8 +27,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full backdrop-blur transition-all duration-300 z-50 ${
-        scrolling ? "lg:py-2 lg:px-16 p-6" : "lg:py-4 lg:px-8 p-4"
+      className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
+        scrolling
+          ? "backdrop-brightness-90 lg:py-2 lg:px-16 p-6"
+          : "backdrop-blur lg:py-4 lg:px-8 p-4"
       }`}
     >
       <div className="flex justify-between items-center">

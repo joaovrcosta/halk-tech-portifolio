@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/intro.tsx",
-    "src/components/description.tsx"
+    "src/components/description.tsx",
+    "src/components/stacks.jsx"
   ],
   "exclude": ["node_modules"]
 }
