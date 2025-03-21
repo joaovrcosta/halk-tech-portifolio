@@ -4,7 +4,7 @@ import Link from "next/link";
 import projects from "../../../../projects.json";
 
 export default function ProjectPage() {
-  const project = projects[0];
+  const project = projects[2];
 
   if (!project) {
     return <div className="text-center mt-20 text-2xl">Project not found</div>;
@@ -71,7 +71,7 @@ export default function ProjectPage() {
           </div>
         </div>
 
-        <div className="flex items-center py-16">
+        <div className="flex items-center py-16 lg:flex-row flex-col">
           <div className="flex-1">
             <h3 className="text-8xl">{project.briefTitle}</h3>
           </div>

@@ -5,14 +5,15 @@
     "description": "Isadora Online is a stylish e-commerce platform from Argentina, offering a curated collection of women’s fashion. Designed for modern women, the site features a seamless shopping experience with trendy and high-quality clothing.",
     "technologies": [
       "HTML5",
-      "Javascript",
+      "Typescript",
       "React",
       "Next.js",
       "ShadnUI",
       "Radix",
-      "Shopify",
-      "Sanity CMS",
-      "Tailwind CSS"
+      "Shopify Storefront",
+      "Contentful CMS",
+      "Tailwind CSS",
+      "Redux"
     ],
     "projectUrl": "https://ar.isadoraonline.com/",
     "logo": "/images/isadora-logo.svg",
@@ -22,7 +23,63 @@
       "/images/projects/isadora-online/isadora-print-3.png"
     ],
     "briefTitle": "THE BRIEF",
-    "briefDescription": "The Isadora e-commerce project was developed to be a reference in the luxury women's fashion segment..."
+    "briefDescription": "Isadora Online is a store dedicated to luxury Argentine fashion, bringing sophistication, authenticity, and elegance to women seeking exclusive pieces. With a refined curation, the brand blends tradition and contemporary trends, offering clothing and accessories that reflect the unique style and charm of Argentine fashion. More than just a store, it s a premium fashion experience for those who value quality and timeless design."
+  },
+  {
+    "id": "use-sneakers",
+    "title": "UseSneakers",
+    "description": "UseSneakers is a sneaker marketplace that connects buyers and sellers, offering a wide range of new and used sneakers. The platform provides a safe and easy way to buy and sell sneakers online.",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Javacript",
+      "Tailwind CSS",
+      "Shopify Storefront",
+      "Sanity CMS",
+      "Styled Components",
+      "GraphQL",
+      "Prisma",
+      "NextAuth",
+      "SEO",
+      "Sentry",
+      "Algolia",
+      "Zustand"
+    ],
+    "projectUrl": "https://www.modausesneaker.com/shop",
+    "logo": "/images/use-sneakers-logo.svg",
+    "screenshots": [
+      "/images/projects/use-sneakers/use-sneakers-print-1.png",
+      "/images/projects/use-sneakers/use-sneakers-print-2.png",
+      "/images/projects/use-sneakers/use-sneakers-print-3.png"
+    ],
+    "briefTitle": "THE BRIEF",
+    "briefDescription": "UseSneakers is a brand specialized in the curation and sale of exclusive and rare sneakers, focusing on serving both enthusiasts and discerning collectors. More than just an e-commerce platform, UseSneakers is a true hub for those seeking unique pieces that combine style, authenticity, and cultural value."
+  },
+  {
+    "id": "the-truth-lies",
+    "title": "The Truth Lies",
+    "description": "The 'The Truth Lies' teaser site for Call of Duty: Black Ops 6 features a 90s-style TV and a mysterious campaign where activists cover historical monuments with blindfolds, emphasizing the phrase. It builds intrigue for the game's Gulf War-era setting..",
+    "technologies": [
+      "HTML5",
+      "Typescript",
+      "React",
+      "Next.js",
+      "Three.js",
+      "Tailwind CSS",
+      "GSAP",
+      "SWR",
+      "Contentful CMS",
+      "Web Audio API"
+    ],
+    "projectUrl": "https://www.callofduty.com/blackops6",
+    "logo": "/images/cod-logo.svg",
+    "screenshots": [
+      "/images/projects/the-truth-lies/the-truth-lies-1.png",
+      "/images/projects/the-truth-lies/the-truth-lies-2.png",
+      "/images/projects/the-truth-lies/the-truth-lies-3.png"
+    ],
+    "briefTitle": "THE BRIEF",
+    "briefDescription": "The Truth Lies is a marketing campaign and an immersive interactive experience developed for the Call of Duty: Black Ops Cold War universe. The website combines an engaging narrative with realistic graphics, providing visitors with a mysterious and tense atmosphere. Through clues and videos, the site takes players on a journey to uncover hidden secrets related to the game's storyline. The experience includes 3D elements, puzzles, and a careful build-up of suspense, reflecting the dark and conspiratorial tone of the Call of Duty universe."
   },
   {
     "id": "luxury-fashion",
@@ -36,6 +93,6 @@
       "/images/projects/luxury-fashion/luxury-print-2.png"
     ],
     "briefTitle": "PROJECT OVERVIEW",
-    "briefDescription": "The Isadora e-commerce project was developed to be a reference in the luxury women's fashion segment. From visual conception to user experience, every detail was carefully planned to convey exclusivity, elegance, and innovation. The platform offers not only sophisticated products but also a distinctive shopping journey, authentically and memorably connecting the brand with its target audience."
+    "briefDescription": "The Truth Lies is a marketing campaign and an immersive interactive experience developed for the Call of Duty: Black Ops Cold War universe. The website combines an engaging narrative with realistic graphics, providing visitors with a mysterious and tense atmosphere. Through clues and videos, the site takes players on a journey to uncover hidden secrets related to the game's storyline. The experience includes 3D elements, puzzles, and a careful build-up of suspense, reflecting the dark and conspiratorial tone of the Call of Duty universe."
   }
 ]

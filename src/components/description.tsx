@@ -36,7 +36,7 @@ const imageItems: ImageItem[] = [
     alt: "design-3",
     title: "UseSnearkers",
     monthly: "54k",
-    url: "/projects/isadora-online",
+    url: "/projects/use-sneakers",
   },
   {
     src: design4,
@@ -56,7 +56,7 @@ const imageItems: ImageItem[] = [
     alt: "design-6",
     title: "The Truth Lies",
     monthly: "7.1M",
-    url: "/projects/isadora-online",
+    url: "/projects/the-truth-lies",
   },
 ];
 
@@ -139,6 +139,7 @@ export default function Description() {
               +<span className="text-2xl">{row3Image[0].monthly}</span> monthly
               visitors
             </span>
+            <Link href={row3Image[0].url}>See more</Link>
           </div>
         </div>
       </div>

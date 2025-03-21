@@ -4,7 +4,7 @@ import Link from "next/link";
 import projects from "../../../../projects.json";
 
 export default function ProjectPage() {
-  const project = projects[0];
+  const project = projects[1];
 
   if (!project) {
     return <div className="text-center mt-20 text-2xl">Project not found</div>;

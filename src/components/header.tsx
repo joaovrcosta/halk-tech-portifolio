@@ -36,7 +36,9 @@ export function Header() {
     >
       <div className="flex justify-between items-center">
         {/* Logo */}
-        <Image src={halkLogo} alt="Halk Bankası" />
+        <Link href={"/"}>
+          <Image src={halkLogo} alt="Halk Bankası" />
+        </Link>
 
         {/* Menu Desktop */}
         <ul className="hidden md:flex space-x-10 text-[10px] text-[#787878]">
