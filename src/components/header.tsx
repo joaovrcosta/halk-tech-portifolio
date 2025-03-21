@@ -5,6 +5,7 @@ import Image from "next/image";
 import halkLogo from "../../public/halk-logo.svg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 export function Header() {
   const [scrolling, setScrolling] = useState(false);
@@ -39,9 +40,11 @@ export function Header() {
 
         {/* Menu Desktop */}
         <ul className="hidden md:flex space-x-10 text-[10px] text-[#787878]">
-          <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
-            HOME
-          </li>
+          <Link href="/">
+            <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
+              HOME
+            </li>
+          </Link>
           <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
             ABOUT
           </li>

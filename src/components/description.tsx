@@ -6,26 +6,58 @@ import design3 from "../../public/images/design-3.png";
 import design4 from "../../public/images/design-4.png";
 import design5 from "../../public/images/design-5.png";
 import design6 from "../../public/images/design-6.png";
+import Link from "next/link";
 
 interface ImageItem {
   src: StaticImageData;
   alt: string;
   title: string;
   monthly?: string;
+  url: string;
 }
 
 const imageItems: ImageItem[] = [
-  { src: design1, alt: "design-1", title: "PlayInc", monthly: "12k" },
-  { src: design2, alt: "design-2", title: "Isadora Online", monthly: "624k" },
-  { src: design3, alt: "design-3", title: "UseSnearkers", monthly: "54k" },
+  {
+    src: design1,
+    alt: "design-1",
+    title: "PlayInc",
+    monthly: "12k",
+    url: "/projects/isadora-online",
+  },
+  {
+    src: design2,
+    alt: "design-2",
+    title: "Isadora Online",
+    monthly: "624k",
+    url: "/projects/isadora-online",
+  },
+  {
+    src: design3,
+    alt: "design-3",
+    title: "UseSnearkers",
+    monthly: "54k",
+    url: "/projects/isadora-online",
+  },
   {
     src: design4,
     alt: "design-4",
     title: "Easy English School",
     monthly: "5k",
+    url: "/projects/isadora-online",
   },
-  { src: design5, alt: "design-5", title: "Code Legends" },
-  { src: design6, alt: "design-6", title: "The Truth Lies", monthly: "7.1M" },
+  {
+    src: design5,
+    alt: "design-5",
+    title: "Code Legends",
+    url: "/projects/isadora-online",
+  },
+  {
+    src: design6,
+    alt: "design-6",
+    title: "The Truth Lies",
+    monthly: "7.1M",
+    url: "/projects/isadora-online",
+  },
 ];
 
 const ImageRow = ({ images }: { images: ImageItem[] }) => (
@@ -48,6 +80,7 @@ const ImageRow = ({ images }: { images: ImageItem[] }) => (
               +<span className="text-2xl">{image.monthly}</span> monthly
               visitors
             </span>
+            <Link href={image?.url}>See more</Link>
           </div>
         </div>
       </div>

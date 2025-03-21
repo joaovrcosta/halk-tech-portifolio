@@ -1,0 +1,41 @@
+[
+  {
+    "id": "isadora-online",
+    "title": "Isadora Online",
+    "description": "Isadora Online is a stylish e-commerce platform from Argentina, offering a curated collection of women’s fashion. Designed for modern women, the site features a seamless shopping experience with trendy and high-quality clothing.",
+    "technologies": [
+      "HTML5",
+      "Javascript",
+      "React",
+      "Next.js",
+      "ShadnUI",
+      "Radix",
+      "Shopify",
+      "Sanity CMS",
+      "Tailwind CSS"
+    ],
+    "projectUrl": "https://ar.isadoraonline.com/",
+    "logo": "/images/isadora-logo.svg",
+    "screenshots": [
+      "/images/projects/isadora-online/isadora-print-1.png",
+      "/images/projects/isadora-online/isadora-print-2.png",
+      "/images/projects/isadora-online/isadora-print-3.png"
+    ],
+    "briefTitle": "THE BRIEF",
+    "briefDescription": "The Isadora e-commerce project was developed to be a reference in the luxury women's fashion segment..."
+  },
+  {
+    "id": "luxury-fashion",
+    "title": "Luxury Fashion",
+    "description": "Luxury Fashion is an exclusive online store for high-end fashion enthusiasts, offering a premium shopping experience.",
+    "technologies": ["React", "Next.js", "Shopify", "Tailwind CSS"],
+    "projectUrl": "https://luxuryfashion.com/",
+    "logo": "/images/luxury-logo.svg",
+    "screenshots": [
+      "/images/projects/luxury-fashion/luxury-print-1.png",
+      "/images/projects/luxury-fashion/luxury-print-2.png"
+    ],
+    "briefTitle": "PROJECT OVERVIEW",
+    "briefDescription": "The Isadora e-commerce project was developed to be a reference in the luxury women's fashion segment. From visual conception to user experience, every detail was carefully planned to convey exclusivity, elegance, and innovation. The platform offers not only sophisticated products but also a distinctive shopping journey, authentically and memorably connecting the brand with its target audience."
+  }
+]

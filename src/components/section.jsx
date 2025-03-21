@@ -24,7 +24,7 @@ export default function Section() {
           robust back-end systems, we’ve got you covered.
         </p>
         <p className="text-[5vw] uppercase mix-blend-difference">
-          Think different
+          +12M users reached
         </p>
       </div>
       <div className="fixed top-[-10vh] left-0 h-[120vh] w-full">
