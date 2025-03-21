@@ -15,7 +15,8 @@ export default function Section() {
       className="relative flex bg-white"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="lg:p-20 p-8 w-full space-y-10">
+      <div className="flex-1">oi</div>
+      <div className="lg:p-20 p-8 w-full space-y-10 flex-1">
         <h2 className="lg:text-6xl text-4xl ">Technologies I work with</h2>
         <div className="border-b my-4"></div>
         <div className="lg:w-[50%]">
@@ -41,7 +42,7 @@ export default function Section() {
           <div>
             <ul className="flex gap-3 items-center flex-wrap">
               <li className="border py-1 px-2 rounded-full">HTML5</li>
-              <li className="border py-1 px-2 rounded-full">CSS3L</li>
+              <li className="border py-1 px-2 rounded-full">CSS3</li>
               <li className="border py-1 px-2 rounded-full">Javascript</li>
               <li className="border py-1 px-2 rounded-full">React</li>
               <li className="border py-1 px-2 rounded-full">Next.js</li>
@@ -70,6 +71,8 @@ export default function Section() {
               <li className="border py-1 px-2 rounded-full">Wordpress</li>
               <li className="border py-1 px-2 rounded-full">Express.JS</li>
               <li className="border py-1 px-2 rounded-full">Fastify</li>
+              <li className="border py-1 px-2 rounded-full">Sanity CMS</li>
+              <li className="border py-1 px-2 rounded-full">Strapi CMS</li>
             </ul>
           </div>
         </div>

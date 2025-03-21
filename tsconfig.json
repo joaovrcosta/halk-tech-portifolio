@@ -29,7 +29,9 @@
     ".next/types/**/*.ts",
     "src/components/intro.tsx",
     "src/components/description.tsx",
-    "src/components/stacks.jsx"
+    "src/components/stacks.jsx",
+    "src/components/card.tsx",
+    "src/components/footer.jsx"
   ],
   "exclude": ["node_modules"]
 }

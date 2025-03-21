@@ -54,8 +54,8 @@ export function Header() {
         </ul>
 
         {/* Botão Desktop */}
-        <button className="hidden md:block text-sm bg-transparent text-white px-4 py-2 rounded-full border border-[#86858B] hover:bg-[#86858B] cursor-pointer transition-all duration-150 ease-in">
-          Book now
+        <button className="hidden md:block text-sm bg-transparent text-[#787878] px-8 py-3 rounded-full border border-[#86858B] hover:bg-[#86858B] cursor-pointer transition-all duration-150 ease-in hover:text-white inset-shadow-amber-50">
+          Let's talk
         </button>
 
         {/* Menu Mobile - Sheet */}
