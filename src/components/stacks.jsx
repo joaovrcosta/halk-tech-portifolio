@@ -4,7 +4,15 @@ import { useRef } from "react";
 const techCategories = [
   {
     title: "Design & Animation",
-    items: ["Figma", "Adobe XD", "Axure RP", "Framer", "Sketch", "Photoshop"],
+    items: [
+      "Figma",
+      "Adobe XD",
+      "Axure RP",
+      "Framer",
+      "Sketch",
+      "Photoshop",
+      "Design System",
+    ],
   },
   {
     title: "Front-end Development",
@@ -27,6 +35,10 @@ const techCategories = [
       "Shopify API",
       "Stripe",
       "MobX",
+      "StoryBook",
+      "Jest",
+      "Vitest",
+      "Cypress",
     ],
   },
   {
