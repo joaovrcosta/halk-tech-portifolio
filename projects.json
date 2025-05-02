@@ -13,7 +13,8 @@
       "Shopify Storefront",
       "Contentful CMS",
       "Tailwind CSS",
-      "Redux"
+      "Redux",
+      "Jest"
     ],
     "projectUrl": "https://ar.isadoraonline.com/",
     "logo": "/images/isadora-logo.svg",
@@ -43,7 +44,8 @@
       "SEO",
       "Sentry",
       "Algolia",
-      "Zustand"
+      "Zustand",
+      "Jest"
     ],
     "projectUrl": "https://www.modausesneaker.com/shop",
     "logo": "/images/use-sneakers-logo.svg",
@@ -69,7 +71,8 @@
       "GSAP",
       "SWR",
       "Contentful CMS",
-      "Web Audio API"
+      "Web Audio API",
+      "Jest & Testing Libraries"
     ],
     "projectUrl": "https://www.callofduty.com/blackops6",
     "logo": "/images/cod-logo.svg",

@@ -50,12 +50,14 @@ export function Header() {
           <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
             ABOUT
           </li>
-          <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
-            PROJECTS
-          </li>
-          <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
+          <Link href="/projects">
+            <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
+              WORK
+            </li>
+          </Link>
+          {/* <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
             CONTACT
-          </li>
+          </li> */}
         </ul>
 
         {/* Botão Desktop */}
