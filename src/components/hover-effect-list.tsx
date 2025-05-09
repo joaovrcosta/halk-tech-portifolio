@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { useState, useRef } from "react";
 
 export default function HoverLightEffect() {
@@ -14,25 +15,33 @@ export default function HoverLightEffect() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative mt-12">
+      {/* camada de luz na borda */}
+      <div className="glow-border" />
+
       <ul
         ref={ulRef}
-        className="relative border border-[#86858B] rounded-full flex py-0 px-6 mt-12 space-x-12 text-white overflow-hidden backdrop-blur-lg transition-all duration-300 ease-in-out"
+        className="relative border border-[#86858B] rounded-full flex py-0 px-6 space-x-12 text-white overflow-hidden backdrop-blur-lg transition-all duration-300 ease-in-out z-10 font-thin"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         style={{
-          position: "relative",
           background: isHovering
-            ? `radial-gradient(circle at ${hoverPosition.x}px ${hoverPosition.y}px, rgba(0, 183, 255, 0.3) 0%, rgba(0, 0, 0, 0) 20%) `
+            ? `radial-gradient(circle at ${hoverPosition.x}px ${hoverPosition.y}px, rgba(0, 183, 255, 0.3) 0%, rgba(0, 0, 0, 0) 20%)`
             : "transparent",
           transition: "background 0.5s ease-out",
           cursor: "pointer",
         }}
       >
-        <li className="relative z-10 px-4 py-2">Design</li>
-        <li className="relative z-10 px-4 py-2">Desenvolvimento</li>
-        <li className="relative z-10 px-4 py-2">Business</li>
+        <li className="relative z-10 px-2 py-2">Design</li>
+        <li className="relative z-10 px-0 py-2">
+          <ArrowRight color="#00C8FF" />
+        </li>
+        <li className="relative z-10 px-2 py-2">Development</li>
+        <li className="relative z-10 px-0 py-2">
+          <ArrowRight color="#00C8FF" />
+        </li>
+        <li className="relative z-10 px-2 py-2">Growing</li>
       </ul>
     </div>
   );

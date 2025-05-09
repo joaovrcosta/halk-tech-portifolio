@@ -114,6 +114,32 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@keyframes light-border {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@layer utilities {
+  .glow-border {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, transparent, #030303, transparent, #00C8FF, transparent);
+    background-size: 200% auto;
+    background-clip: border-box;
+    animation: light-border 8s linear infinite;
+    pointer-events: none;
+    -webkit-animation: light-border 8s linear infinite;
+}
+}
+
+
 
 
 @layer base {

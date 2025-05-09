@@ -31,7 +31,7 @@ export function Header() {
       className={`fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
         scrolling
           ? "backdrop-brightness-90 lg:py-2 lg:px-16 p-6"
-          : "backdrop-blur lg:py-4 lg:px-8 p-4"
+          : "backdrop-blur lg:py-6 lg:px-28 p-4"
       }`}
     >
       <div className="flex justify-between items-center">
@@ -41,29 +41,30 @@ export function Header() {
         </Link>
 
         {/* Menu Desktop */}
-        <ul className="hidden md:flex space-x-10 text-[10px] text-[#787878]">
-          <Link href="/">
-            <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
-              HOME
+        <ul className="hidden md:flex space-x-10 text-[16px] text-white font-poppins items-center font-extralight">
+          {/* <Link href="/">
+            <li className="hover:text-[#86858B] transition-all duration-150 ease-in cursor-pointer ">
+              Home
             </li>
-          </Link>
-          <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
-            ABOUT
-          </li>
+          </Link> */}
           <Link href="/projects">
-            <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
-              WORK
+            <li className="hover:text-[#86858B] transition-all duration-150 ease-in cursor-pointer">
+              Work
             </li>
           </Link>
+          <li className="hover:text-[#86858B] transition-all duration-150 ease-in cursor-pointer">
+            About
+          </li>
           {/* <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
             CONTACT
           </li> */}
+          <li>
+            {/* Botão Desktop */}
+            <button className="hidden md:block text-[16px] bg-white text-black px-4 py-[6px] rounded-full border border-[#86858B] hover:bg-[#86858B] cursor-pointer transition-all duration-150 ease-in hover:text-white">
+              Book now
+            </button>
+          </li>
         </ul>
-
-        {/* Botão Desktop */}
-        <button className="hidden md:block text-sm bg-transparent text-white px-4 py-2 rounded-full border border-[#86858B] hover:bg-[#86858B] cursor-pointer transition-all duration-150 ease-in">
-          Book now
-        </button>
 
         {/* Menu Mobile - Sheet */}
         <div className="md:hidden">

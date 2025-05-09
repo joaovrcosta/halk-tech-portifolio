@@ -59,9 +59,12 @@ export function Hero() {
             </motion.p>
           </div>
           <div className="flex space-x-6">
-            <Link href="https://www.linkedin.com/in/jo%C3%A3o-victor-41b89013a/">
+            <Link
+              href="https://www.linkedin.com/in/jo%C3%A3o-victor-41b89013a/"
+              target="_blank"
+            >
               <motion.div
-                className="h-12 w-12 bg-[#302F39] flex items-center justify-center rounded-full mt-12 cursor-pointer border border-[#86858B]"
+                className="h-12 w-12 bg-[#302F39] flex items-center justify-center rounded-full mt-12 cursor-pointer border border-[#86858B] hover:bg-[#00C8FF] transition-all duration-100 ease-in-out"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, delay: 1 }}
@@ -69,9 +72,9 @@ export function Hero() {
                 <LinkedinLogo size={28} className="text-white" weight="fill" />
               </motion.div>
             </Link>
-            <Link href="https://www.linkedin.com/in/jo%C3%A3o-victor-41b89013a/">
+            <Link href="https://github.com/joaovrcosta" target="_blank">
               <motion.div
-                className="h-12 w-12 bg-[#302F39] flex items-center justify-center rounded-full mt-12 cursor-pointer border border-[#86858B]"
+                className="h-12 w-12 bg-[#302F39] flex items-center justify-center rounded-full mt-12 cursor-pointer border border-[#86858B] hover:bg-[#00C8FF] transition-all duration-100 ease-in-out"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, delay: 1.25 }}
