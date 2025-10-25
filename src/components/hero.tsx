@@ -29,17 +29,18 @@ export function Hero() {
             </div>
             <div className="lg:hidden block">
               <motion.h1
-                className="lg:text-[64px] text-[32px] text-white font-poppins text-center leading-12 text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                className="lg:text-[64px] text-[32px] text-white font-poppins text-center leading-12 text-thi"
+                initial={{ opacity: 0, y: -50 }} // Começa 50px abaixo
+                animate={{ opacity: 1, y: 0 }} // Vai para a posição original
                 transition={{ duration: 1.5 }}
               >
                 Grow your brand
               </motion.h1>
+
               <motion.span
-                className="lg:text-[96px] text-[42px] text-center italic bg-gradient-to-br from-[#00C8FF] to-[#004E63] bg-clip-text text-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                className="lg:text-[96px] text-[42px] text-center italic bg-gradient-to-br from-[#00C8FF] to-[#004E63] bg-clip-text text-transparent block"
+                initial={{ opacity: 0, y: 50 }} // Mesmo movimento de baixo
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, delay: 0.25 }}
               >
                 think different
