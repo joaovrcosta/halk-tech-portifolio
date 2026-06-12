@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import halkLogoWhite from "../../public/halk-logo.svg";
 import halkLogoDark from "../../public/halk-logo-dark.svg";
@@ -9,18 +9,90 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+type HeaderTheme = "light" | "dark";
+
+function detectThemeAt(x: number, y: number): HeaderTheme {
+  const elements = document.elementsFromPoint(x, y);
+
+  for (const el of elements) {
+    if (el.closest("header")) continue;
+
+    let element = el as HTMLElement;
+
+    while (element && element !== document.documentElement) {
+      const dataTheme = element.dataset.headerTheme;
+      if (dataTheme === "light" || dataTheme === "dark") {
+        return dataTheme;
+      }
+
+      const { backgroundColor } = window.getComputedStyle(element);
+      const match = backgroundColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+
+      if (
+        match &&
+        !backgroundColor.includes(", 0)") &&
+        backgroundColor !== "transparent"
+      ) {
+        const r = Number(match[1]);
+        const g = Number(match[2]);
+        const b = Number(match[3]);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance > 0.6 ? "light" : "dark";
+      }
+
+      element = element.parentElement as HTMLElement;
+    }
+  }
+
+  return "dark";
+}
+
+function detectHeaderThemes() {
+  const logoX = 120;
+  const navX = Math.max(window.innerWidth - 160, logoX + 1);
+  const y = 72;
+
+  return {
+    logo: detectThemeAt(logoX, y),
+    nav: detectThemeAt(navX, y),
+  };
+}
+
 export function Header() {
-  const [scrolling, setScrolling] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
-
-  const logo = isHomePage ? halkLogoWhite : halkLogoDark;
-  const textColor = isHomePage ? "text-white" : "text-black";
-  const buttonColor = isHomePage ? "text-black" : "text-white";
-  const bgColor = isHomePage ? "bg-white" : "bg-black";
-
+  const [scrolling, setScrolling] = useState(false);
+  const [logoTheme, setLogoTheme] = useState<HeaderTheme>(
+    pathname === "/projects" ? "light" : "dark"
+  );
+  const [navTheme, setNavTheme] = useState<HeaderTheme>("dark");
   const [hideOnScroll, setHideOnScroll] = useState(false);
   const lastScrollY = useRef(0);
+
+  const logo = logoTheme === "light" ? halkLogoDark : halkLogoWhite;
+  const textColor = navTheme === "light" ? "text-black" : "text-white";
+  const buttonColor = navTheme === "light" ? "text-white" : "text-black";
+  const bgColor = navTheme === "light" ? "bg-black" : "bg-white";
+  const menuColor = navTheme === "light" ? "text-black" : "text-white";
+  const linkHoverColor = "hover:text-[#86858B]";
+  const contactHoverColor =
+    navTheme === "light" ? "hover:text-black" : "hover:text-white";
+
+  useLayoutEffect(() => {
+    const updateThemes = () => {
+      const themes = detectHeaderThemes();
+      setLogoTheme(themes.logo);
+      setNavTheme(themes.nav);
+    };
+
+    updateThemes();
+    window.addEventListener("scroll", updateThemes, { passive: true });
+    window.addEventListener("resize", updateThemes);
+
+    return () => {
+      window.removeEventListener("scroll", updateThemes);
+      window.removeEventListener("resize", updateThemes);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +107,7 @@ export function Header() {
       lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -44,14 +116,11 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolling(true); // diminui o padding
-      } else {
-        setScrolling(false); // volta ao padding original
-      }
+      setScrolling(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -69,33 +138,31 @@ export function Header() {
       }`}
     >
       <div className="flex justify-between items-center">
-        {/* Logo */}
         <Link href={"/"}>
           <Image src={logo} alt="Halk Bankası" height={16} />
         </Link>
 
-        {/* Menu Desktop */}
         <ul
           className={`hidden md:flex space-x-10 text-[16px] ${textColor} font-poppins items-center font-extralight`}
         >
-          {/* <Link href="/">
-            <li className="hover:text-[#86858B] transition-all duration-150 ease-in cursor-pointer ">
-              Home
-            </li>
-          </Link> */}
           <Link href="/projects">
-            <li className="hover:text-[#86858B] transition-all duration-150 ease-in cursor-pointer">
+            <li
+              className={`${linkHoverColor} transition-all duration-150 ease-in cursor-pointer`}
+            >
               Work
             </li>
           </Link>
-          <li className="hover:text-[#86858B] transition-all duration-150 ease-in cursor-pointer">
+          <li
+            className={`${linkHoverColor} transition-all duration-150 ease-in cursor-pointer`}
+          >
             About
           </li>
-          <li className="hover:text-white transition-all duration-150 ease-in cursor-pointer">
+          <li
+            className={`${contactHoverColor} transition-all duration-150 ease-in cursor-pointer`}
+          >
             Contact
           </li>
           <li>
-            {/* Botão Desktop */}
             <button
               className={`hidden md:block text-[16px] ${bgColor} ${buttonColor} px-4 py-[6px] rounded-full border border-[#86858B] hover:bg-[#86858B] cursor-pointer transition-all duration-150 ease-in hover:text-white`}
             >
@@ -104,11 +171,10 @@ export function Header() {
           </li>
         </ul>
 
-        {/* Menu Mobile - Sheet */}
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger>
-              <Menu className="w-6 h-6 text-white cursor-pointer" />
+              <Menu className={`w-6 h-6 ${menuColor} cursor-pointer`} />
             </SheetTrigger>
             <SheetContent side="left">
               <ul className="space-y-6 text-lg text-gray-800">

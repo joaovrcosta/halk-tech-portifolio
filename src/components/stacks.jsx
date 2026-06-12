@@ -1,3 +1,5 @@
+"use client";
+
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 
@@ -86,6 +88,7 @@ export default function Section() {
   return (
     <motion.div
       ref={container}
+      data-header-theme="dark"
       className="relative flex  bg-[radial-gradient(circle_at_bottom_right,_#5F5F5F_0%,_#030303_80%)]"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)", y }}
     >

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Background from "../../public/images/1.jpg";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -14,6 +16,7 @@ export default function Section() {
   return (
     <div
       ref={container}
+      data-header-theme="dark"
       className="relative flex items-center justify-center h-screen overflow-hidden"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >

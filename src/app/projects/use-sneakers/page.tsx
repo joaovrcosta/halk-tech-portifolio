@@ -11,7 +11,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="mt-[70px] w-full flex items-center">
+    <div data-header-theme="dark" className="mt-[70px] w-full flex items-center">
       <div className="max-w-[1346px] mx-auto p-8 lg:mt-16 mt-2">
         <div className="flex lg:flex-row flex-col">
           <div className="w-full">

@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
-import design1 from "../../public/images/design-1.png";
+import design1 from "../../public/images/design-7.png";
 import design2 from "../../public/images/design-2.png";
 import design3 from "../../public/images/design-3.png";
 import design4 from "../../public/images/design-4.png";
@@ -20,8 +20,8 @@ const imageItems: ImageItem[] = [
   {
     src: design1,
     alt: "design-1",
-    title: "PlayInc",
-    monthly: "12k",
+    title: "Dash In",
+    monthly: "450k",
     url: "/projects/isadora-online",
   },
   {

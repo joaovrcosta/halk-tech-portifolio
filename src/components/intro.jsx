@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
@@ -15,6 +17,7 @@ export default function Intro() {
   return (
     <div className="lg:h-[100vh] h-[70vh] overflow-hidden">
       <motion.div
+        data-header-theme="dark"
         style={{ y }}
         className="relative h-full bg-[radial-gradient(circle_at_bottom_right,_#5F5F5F_0%,_#030303_80%)]"
       >

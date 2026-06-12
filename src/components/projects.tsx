@@ -2,7 +2,12 @@
 
 import { useMemo, useRef } from "react";
 import Image, { StaticImageData } from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  MotionValue,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 export interface Project {
   title: string;
@@ -16,6 +21,32 @@ interface ProjectShowcaseProps {
   index: number;
 }
 
+interface AnimatedLetterProps {
+  letter: string;
+  scrollYProgress: MotionValue<number>;
+  offset: number;
+}
+
+function AnimatedLetter({
+  letter,
+  scrollYProgress,
+  offset,
+}: AnimatedLetterProps) {
+  const top = useTransform(scrollYProgress, [0, 1], [0, offset]);
+  const isSpace = letter === " ";
+
+  return (
+    <motion.span
+      style={{ top }}
+      className={`relative text-[#fa6801] ${
+        isSpace ? "w-[0.5em]" : "inline-block"
+      }`}
+    >
+      {letter}
+    </motion.span>
+  );
+}
+
 export default function ProjectShowcase({
   project,
   index,
@@ -27,7 +58,6 @@ export default function ProjectShowcase({
     offset: ["start end", "end start"],
   });
 
-  // const sm = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const md = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const lg = useTransform(scrollYProgress, [0, 1], [0, -250]);
 
@@ -38,28 +68,18 @@ export default function ProjectShowcase({
     y: imageTransforms[i],
   }));
 
-  const titleAnimations = useMemo(
+  const letterOffsets = useMemo(
     () =>
       project.title
         .split("")
-        .map(() =>
-          useTransform(
-            scrollYProgress,
-            [0, 1],
-            [0, Math.floor(Math.random() * -75) - 25]
-          )
-        ),
-    [scrollYProgress, project.title]
+        .map(() => Math.floor(Math.random() * -75) - 25),
+    [project.title]
   );
-
-  // const isEven = index % 2 === 0;
-  // // const alignClass = isEven
-  // //   ? "items-start text-left ml-[10vw]"
-  // //   : "items-end text-right mr-[10vw]";
 
   return (
     <div
       ref={container}
+      data-header-theme="dark"
       className="mt-[10vh] min-h-screen relative bg-[#0e0e0e]"
     >
       <div
@@ -70,20 +90,14 @@ export default function ProjectShowcase({
         } items-center text-center px-4 md:px-0`}
       >
         <p className="text-white m-0 mt-2 text-[6vw] md:text-[3vw] uppercase flex flex-wrap gap-[0.1em]">
-          {project.title.split("").map((letter, i) => {
-            const isSpace = letter === " ";
-            return (
-              <motion.span
-                key={`l_${i}`}
-                style={{ top: titleAnimations[i] }}
-                className={`relative text-[#fa6801] ${
-                  isSpace ? "w-[0.5em]" : "inline-block"
-                }`}
-              >
-                {letter}
-              </motion.span>
-            );
-          })}
+          {project.title.split("").map((letter, i) => (
+            <AnimatedLetter
+              key={`l_${i}`}
+              letter={letter}
+              scrollYProgress={scrollYProgress}
+              offset={letterOffsets[i]}
+            />
+          ))}
         </p>
         <div className="max-w-[90vw] md:max-w-[35vw] text-white mt-4">
           <span>{project.description}</span>
@@ -103,7 +117,6 @@ export default function ProjectShowcase({
         )}
       </div>
 
-      {/* Desktop layout with scroll effect */}
       <div className="hidden md:block relative w-full h-[60vh] mt-[5vh]">
         {images.map(({ src, y }, i) => {
           const positions = [
@@ -131,8 +144,7 @@ export default function ProjectShowcase({
         })}
       </div>
 
-      {/* Mobile layout: stacked images with no scroll effect */}
-      <div className="block md:hidden flex flex-col gap-4 items-center mt-8 px-4">
+      <div className="flex md:hidden flex-col gap-4 items-center mt-8 px-4">
         {project.images.map((src, i) => (
           <div
             key={`mobile_${i}`}
