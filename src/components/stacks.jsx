@@ -1,62 +1,35 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
-
-const gradientMap = {
-  "Design & Animation":
-    "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500",
-  "Front-end Development": "bg-gradient-to-r from-blue-500 to-teal-400",
-  "Back-end Development": "bg-gradient-to-r from-green-500 to-lime-400",
-  "Database Solutions": "bg-gradient-to-r from-purple-500 to-indigo-400",
-};
-
-const shadowMap = {
-  "Design & Animation": "hover:shadow-[0_0_20px_#f472b6]",
-  "Front-end Development": "hover:shadow-[0_0_20px_#38bdf8]",
-  "Back-end Development": "hover:shadow-[0_0_20px_#4ade80]",
-  "Database Solutions": "hover:shadow-[0_0_20px_#c084fc]",
-};
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const techCategories = [
   {
     title: "Front-end Development",
     items: [
-      "HTML5",
-      "CSS3L",
-      "Javascript",
       "React",
       "Next.js",
-      "Material UI",
-      "ShadnUI",
-      "Radix",
-      "SASS",
-      "Style Components",
-      "jQuery",
-      "Three.JS",
+      "TypeScript",
       "Tailwind CSS",
+      "Framer Motion",
+      "Shadcn UI",
+      "Radix",
       "Zustand",
       "Redux",
-      "Shopify API",
-      "Stripe",
-      "MobX",
-      "StoryBook",
-      "Jest",
-      "Vitest",
-      "Cypress",
+      "Three.js",
     ],
   },
   {
     title: "Back-end Development",
     items: [
-      "NodeJS",
+      "Node.js",
       "NestJS",
-      "Wordpress",
-      "Express.JS",
+      "Express",
       "Fastify",
+      "WordPress",
       "Sanity CMS",
-      "Strapi CMS",
-      "Contentful CMS",
+      "Strapi",
+      "Contentful",
     ],
   },
   {
@@ -64,77 +37,103 @@ const techCategories = [
     items: [
       "Figma",
       "Adobe XD",
-      "Axure RP",
       "Framer",
-      "Sketch",
       "Photoshop",
-      "Design System",
+      "Design Systems",
+      "Prototyping",
     ],
   },
   {
-    title: "Database Solutions",
-    items: ["MySQL", "PostgreSQL", "MongoDB", "Firebase", "Supabase", "AWS"],
+    title: "Database & Cloud",
+    items: [
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Firebase",
+      "Supabase",
+      "AWS",
+    ],
   },
 ];
 
-export default function Section() {
-  const container = useRef(null);
+function CategoryItem({ category }) {
+  const ref = useRef(null);
+
   const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end start"],
+    target: ref,
+    offset: ["start center", "center center", "end center"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.12, 1, 0.12]);
+
+  const titleColor = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    ["#2a2a2a", "#ffffff", "#2a2a2a"]
+  );
+
+  const subtitleColor = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    ["#1a1a1a", "#86858B", "#1a1a1a"]
+  );
 
   return (
     <motion.div
-      ref={container}
-      data-header-theme="dark"
-      className="relative flex  bg-[radial-gradient(circle_at_bottom_right,_#5F5F5F_0%,_#030303_80%)]"
-      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)", y }}
+      ref={ref}
+      style={{ opacity }}
+      className="flex min-h-[75vh] flex-col justify-center py-10 md:min-h-[85vh]"
     >
-      <div className="lg:p-20 p-8 w-full space-y-10">
-        <div className="flex items-center justify-center">
-          <div>
-            <div className="flex items-center justify-center">
-              <span
-                className="text-sm text-center bg-gradient-to-r from-[#00C8FF] to-[#004E63] bg-clip-text
-              text-transparent font-thin mb-2"
-              >
-                Technologies
-              </span>
-            </div>
-            <h2 className="lg:text-2xl text-2xl text-white text-center">
-              Technologies I worked with
-            </h2>
-          </div>
-        </div>
-        {/* <div className="border-b my-4"></div> */}
+      <motion.h3
+        style={{ color: titleColor }}
+        className="text-3xl font-medium leading-tight md:text-5xl md:leading-[1.1]"
+      >
+        {category.title}
+      </motion.h3>
+      <motion.p
+        style={{ color: subtitleColor }}
+        className="mt-3 max-w-lg text-sm leading-relaxed md:text-base"
+      >
+        {category.items.join(" · ")}
+      </motion.p>
+    </motion.div>
+  );
+}
 
-        <div className="gap-4">
+export default function Stacks() {
+  return (
+    <section
+      data-header-theme="dark"
+      className="relative bg-[#0a0a0a]"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#1a1a1a 1px, transparent 1px), linear-gradient(90deg, #1a1a1a 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      <div className="relative grid grid-cols-1 px-[6vw] lg:grid-cols-2 lg:gap-20">
+        <div className="sticky top-0 flex h-screen flex-col justify-center py-16">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-2 w-2 bg-[#00C8FF]" />
+            <span className="text-sm font-medium text-[#00C8FF]/80">
+              Technologies
+            </span>
+          </div>
+          <h2 className="max-w-md text-4xl font-medium leading-tight text-white md:text-6xl md:leading-[1.05]">
+            What I use.
+          </h2>
+        </div>
+
+        <div className="pb-[30vh] pt-[20vh] lg:pb-[35vh] lg:pt-[25vh]">
           {techCategories.map((category) => (
-            <div
-              key={category.title}
-              className={`group w-full lg:basis-[calc(50%-0.5rem)] mb-4  bg-[#171718] p-4 border border-[#27272a] rounded-3xl transition-shadow duration-300 ${
-                shadowMap[category.title]
-              }`}
-            >
-              <div className="mb-3 mt-3 w-[50%]">
-                <h4 className={`lg:text-4xl text-2xl`}>{category.title}</h4>
-              </div>
-              <ul className="flex gap-3 items-center flex-wrap">
-                {category.items.map((item) => (
-                  <li
-                    key={item}
-                    className="py-1 px-2 rounded-sm text-[#9B9EA3] hover:bg-[#e5e5e5] cursor-pointer transition-all ease-in-out duration-150 hover:text-black"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <CategoryItem key={category.title} category={category} />
           ))}
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 }
