@@ -217,7 +217,7 @@ export default function Description() {
   const backgroundColor = useTransform(
     scrollYProgress,
     [0, 1],
-    ["#ffffff", "#004E63"]
+    ["#ffffff", "#070707"]
   );
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
