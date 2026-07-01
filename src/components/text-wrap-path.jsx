@@ -40,7 +40,7 @@ export default function TextWrapPath({
         <motion.path
           d={WINDING_PATH}
           stroke={`url(#${gradientId})`}
-          strokeWidth="5"
+          strokeWidth="24"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray="0 1"
