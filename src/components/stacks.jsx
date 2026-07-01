@@ -61,7 +61,7 @@ function ServiceBlock({ service, index, total, scrollYProgress }) {
       <TextWrapPath pathLength={pathLength} pathOpacity={pathOpacity}>
         <motion.h2
           style={{ opacity: titleOpacity, y: titleY }}
-          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-8xl font-medium leading-tight text-white will-change-transform md:text-8xl md:leading-[1.05]"
+          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 lg:text-8xl text-4xl font-medium leading-tight text-white will-change-transform md:text-8xl md:leading-[1.05]"
         >
           {words.map((word, wordIndex) => (
             <span key={`${service.title}-${wordIndex}`}>{word}</span>
