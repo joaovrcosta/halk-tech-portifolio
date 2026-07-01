@@ -2,42 +2,50 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import {
-  Briefcase,
-  GlobeHemisphereWest,
-  UsersThree,
-} from "@phosphor-icons/react";
+import { Instrument_Serif } from "next/font/google";
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const metrics = [
   {
     end: 10,
+    prefix: "",
     suffix: "M+",
     decimals: 0,
-    label: "users reached",
+    title: "Users Reached",
     description:
-      "users reached through our tailored solutions and digital products.",
-    icon: UsersThree,
+      "Users reached through our tailored solutions and digital products.",
   },
   {
     end: 2.9,
+    prefix: "",
     suffix: "B+",
     decimals: 1,
-    label: "views",
+    title: "Views",
     description:
-      "peak monthly visitors engaging with the websites we build.",
-    icon: GlobeHemisphereWest,
+      "Peak monthly visitors engaging with the websites we build.",
   },
   {
     end: 25,
+    prefix: "",
     suffix: "+",
     decimals: 0,
-    label: "projects",
-    description: "successfully delivered across multiple industries.",
-    icon: Briefcase,
+    title: "Projects",
+    description: "Successfully delivered across multiple industries.",
   },
 ];
 
-function CountUp({ end, suffix, decimals = 0, duration = 1.6, start = false }) {
+function CountUp({
+  end,
+  prefix = "",
+  suffix,
+  decimals = 0,
+  duration = 1.6,
+  start = false,
+}) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -68,91 +76,50 @@ function CountUp({ end, suffix, decimals = 0, duration = 1.6, start = false }) {
 
   return (
     <span>
+      {prefix}
       {formatted}
       {suffix}
     </span>
   );
 }
 
-function KpiCard({ metric, startCount }) {
-  const Icon = metric.icon;
-  const cardRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-
-  const handleMouseMove = (event) => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-
-    setPosition({
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
-    });
-  };
-
+function KpiItem({ metric, startCount, showDivider }) {
   return (
-    <article
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-      className="group relative flex min-h-[320px] flex-col justify-between overflow-hidden rounded-2xl border border-white/5 bg-[#111111] p-8 transition-colors duration-300 hover:border-white/10 md:min-h-[380px] md:p-10"
+    <div
+      className={`relative flex flex-col justify-between px-8 py-14 md:px-12 md:py-20 lg:px-16 ${
+        showDivider ? "border-t border-white/10 md:border-t-0" : ""
+      }`}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(#1f1f1f 1px, transparent 1px), linear-gradient(90deg, #1f1f1f 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      {showDivider && (
+        <div
+          className="absolute top-8 bottom-8 left-0 hidden w-px bg-white/10 md:block"
+          aria-hidden
+        />
+      )}
 
-      <div
-        className="pointer-events-none absolute inset-0 transition-opacity duration-500"
-        style={{
-          opacity: isHovering ? 1 : 0,
-          background: `radial-gradient(520px circle at ${position.x}px ${position.y}px, rgba(0, 200, 255, 0.18), transparent 42%)`,
-        }}
-      />
+      <p
+        className={`${instrumentSerif.className} text-[clamp(2.75rem,5.5vw,4.25rem)] leading-none tracking-tight text-white`}
+      >
+        <CountUp
+          end={metric.end}
+          prefix={metric.prefix}
+          suffix={metric.suffix}
+          decimals={metric.decimals}
+          start={startCount}
+        />
+      </p>
 
-      <div
-        className="pointer-events-none absolute inset-0 transition-opacity duration-500"
-        style={{
-          opacity: isHovering ? 1 : 0,
-          background: `radial-gradient(220px circle at ${position.x}px ${position.y}px, rgba(255, 255, 255, 0.07), transparent 70%)`,
-        }}
-      />
-
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center">
-        <p
-          className="text-[clamp(3.5rem,8vw,5.5rem)] font-semibold leading-none tracking-tight"
-          style={{
-            background:
-              "linear-gradient(180deg, #ffffff 0%, #ffffff 45%, rgba(255,255,255,0.15) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
+      <div className="mt-10 md:mt-14">
+        <h3
+          className={`${instrumentSerif.className} text-xl text-white md:text-2xl`}
         >
-          <CountUp
-            end={metric.end}
-            suffix={metric.suffix}
-            decimals={metric.decimals}
-            start={startCount}
-          />
-        </p>
-        <p className="mt-3 text-lg font-medium text-white md:text-xl">
-          {metric.label}
-        </p>
-        <p className="mt-4 max-w-[220px] text-sm leading-relaxed text-[#86858B]">
+          {metric.title}
+        </h3>
+        <p className="mt-4 max-w-[240px] text-sm leading-relaxed text-[#86858B] md:text-[15px]">
           {metric.description}
         </p>
       </div>
-
-      <div className="relative z-10 mt-8 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-[#1a1a1a] transition-colors duration-300 group-hover:border-[#00C8FF]/30 group-hover:bg-[#00C8FF]/10">
-        <Icon size={18} weight="regular" className="text-white/80" />
-      </div>
-    </article>
+    </div>
   );
 }
 
@@ -164,30 +131,17 @@ export default function Kpi() {
     <section
       ref={sectionRef}
       data-header-theme="dark"
-      className="bg-black px-[6vw] py-24 md:py-32"
+      className="border-y border-white/10 bg-black"
     >
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-16 flex flex-col items-center text-center">
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-[#86858B]">
-            📈 Insights
-          </span>
-          <h2 className="max-w-2xl text-3xl font-medium leading-tight text-white md:text-5xl md:leading-[1.1]">
-            Numbers That Just Make Sense
-          </h2>
-          <p className="mt-4 max-w-lg text-sm text-[#86858B] md:text-base">
-            Relentlessly KPI-Driven, Driving Measurable Results.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-          {metrics.map((metric) => (
-            <KpiCard
-              key={metric.label}
-              metric={metric}
-              startCount={isInView}
-            />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {metrics.map((metric, index) => (
+          <KpiItem
+            key={metric.title}
+            metric={metric}
+            startCount={isInView}
+            showDivider={index > 0}
+          />
+        ))}
       </div>
     </section>
   );
