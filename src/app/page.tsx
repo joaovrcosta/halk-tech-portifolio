@@ -14,7 +14,9 @@ export default function Home() {
       <Section />
       <Kpi />
       <InsightsTechTransition />
-      <Stacks />
+      <div className="relative -mt-[200vh]">
+        <Stacks />
+      </div>
       <Footer />
     </main>
   );
