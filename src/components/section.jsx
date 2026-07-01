@@ -22,7 +22,7 @@ const slides = [
     left: "-25%",
   },
   {
-    text: "+12M Users Reached",
+    text: "+10M Users Reached",
     src: design3,
     direction: "left",
     left: "-75%",

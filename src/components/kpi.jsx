@@ -80,7 +80,7 @@ export default function Kpi() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 flex flex-col items-center text-center">
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-[#86858B]">
-            📈 Key Performance Indicators
+            📈 Insights
           </span>
           <h2 className="max-w-2xl text-3xl font-medium leading-tight text-white md:text-5xl md:leading-[1.1]">
             Numbers That Just Make Sense
