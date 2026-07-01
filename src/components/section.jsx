@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Background from "../../public/images/1.jpg";
 import design1 from "../../public/projects/projeto-img-1.png";
 import design2 from "../../public/images/design-7.png";
 import design3 from "../../public/images/projects/wills-group/website-img.png";
@@ -32,9 +31,7 @@ const slides = [
 function Phrase({ text, src }) {
   return (
     <div className="flex items-center gap-5 px-5">
-      <p className="text-[7.5vw] uppercase text-white mix-blend-difference">
-        {text}
-      </p>
+      <p className="text-[7.5vw] uppercase text-black">{text}</p>
       <span className="relative h-[7.5vw] aspect-[4/2] overflow-hidden rounded-full">
         <Image src={src} alt="" fill style={{ objectFit: "cover" }} />
       </span>
@@ -66,16 +63,14 @@ export default function Section() {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-
   return (
     <div
       ref={container}
-      data-header-theme="dark"
-      className="relative flex h-screen items-center justify-center overflow-hidden"
+      data-header-theme="light"
+      className="relative flex h-screen items-center justify-center overflow-hidden bg-white"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="relative z-10 flex w-full flex-col justify-center gap-6 overflow-hidden py-20 mix-blend-difference md:gap-10">
+      <div className="relative z-10 flex w-full flex-col justify-center gap-6 overflow-hidden py-20 md:gap-10">
         {slides.map((slide) => (
           <Slide
             key={slide.text}
@@ -86,17 +81,6 @@ export default function Section() {
             src={slide.src}
           />
         ))}
-      </div>
-
-      <div className="fixed top-[-10vh] left-0 h-[120vh] w-full">
-        <motion.div style={{ y }} className="relative h-full w-full">
-          <Image
-            src={Background}
-            fill
-            alt="image"
-            style={{ objectFit: "cover" }}
-          />
-        </motion.div>
       </div>
     </div>
   );
