@@ -4,7 +4,6 @@ import { useRef } from "react";
 import {
   motion,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 
@@ -47,21 +46,15 @@ export default function InsightsTechTransition() {
     offset: ["start start", "end end"],
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 28,
-    restDelta: 0.001,
-  });
-
   const maskSize = useTransform(
-    smoothProgress,
-    [0, 0.12, 0.72],
-    ["6vmin", "14vmin", "300vmin"]
+    scrollYProgress,
+    [0, 0.12, 0.85],
+    ["6vmin", "14vmin", "360vmin"]
   );
 
-  const labelOpacity = useTransform(smoothProgress, [0, 0.2, 0.45], [1, 0.6, 0]);
+  const labelOpacity = useTransform(scrollYProgress, [0, 0.2, 0.45], [1, 0.6, 0]);
 
-  const overlayOpacity = useTransform(smoothProgress, [0.62, 0.82], [1, 0]);
+  const overlayOpacity = useTransform(scrollYProgress, [0.78, 0.98], [1, 0]);
 
   return (
     <section
@@ -74,7 +67,7 @@ export default function InsightsTechTransition() {
 
         <motion.div
           style={{ opacity: overlayOpacity }}
-          className="pointer-events-none absolute inset-0 z-10"
+          className="pointer-events-none absolute inset-0 z-10 will-change-[opacity]"
         >
           <div className="absolute inset-0 bg-black" />
 
