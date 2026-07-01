@@ -91,8 +91,8 @@ export default function InsightsTechTransition() {
             style={{ opacity: labelOpacity }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <span className="text-xs font-medium uppercase tracking-[0.35em] text-white/30">
-              Insights
+            <span className="text-xs font-medium uppercase tracking-[0.35em] text-white">
+              Our Services
             </span>
           </motion.div>
         </motion.div>
