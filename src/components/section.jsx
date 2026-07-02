@@ -67,7 +67,7 @@ export default function Section() {
     <div
       ref={container}
       data-header-theme="light"
-      className="relative flex h-screen items-center justify-center overflow-hidden bg-white"
+      className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-white"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
       <div className="relative z-10 flex w-full flex-col justify-center gap-6 overflow-hidden py-20 md:gap-10">

@@ -1,7 +1,9 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+import ProjectPreviewModal, {
+  type ProjectPreviewItem,
+} from "./project-preview-modal";
 import { useLayoutEffect, useRef, useState } from "react";
 import {
   motion,
@@ -19,16 +21,8 @@ import codLogo from "../../public/images/cod-logo.svg";
 import isadoraLogo from "../../public/images/isadora-logo.svg";
 import halkLogoDark from "../../public/halk-logo-dark.svg";
 
-interface ProjectItem {
-  alt: string;
-  title: string;
+interface ProjectItem extends ProjectPreviewItem {
   monthly?: string;
-  url: string;
-  fit?: "cover" | "contain";
-  src?: StaticImageData;
-  video?: string;
-  poster?: StaticImageData;
-  videoCrop?: "left" | "right";
   logo?: StaticImageData;
 }
 
@@ -43,6 +37,8 @@ const imageItems: ProjectItem[] = [
     src: design1,
     alt: "design-1",
     title: "Normal is Boring",
+    description:
+      "A bold digital experience built to challenge conventions and turn brand storytelling into something memorable, expressive, and impossible to ignore.",
     monthly: "450k",
     url: "/projects/isadora-online",
     logo: halkLogoDark,
@@ -50,6 +46,8 @@ const imageItems: ProjectItem[] = [
   {
     alt: "design-6",
     title: "The Truth Lies",
+    description:
+      "An immersive teaser experience for Call of Duty: Black Ops 6, blending 90s aesthetics, mystery, and interactive storytelling to build intrigue around the campaign.",
     monthly: "7.1M",
     url: "/projects/the-truth-lies",
     video: TRUTH_LIES_VIDEO,
@@ -62,6 +60,8 @@ const imageItems: ProjectItem[] = [
     src: design2,
     alt: "design-2",
     title: "Isadora Online",
+    description:
+      "A refined e-commerce platform for Argentine women's fashion, combining elegance, performance, and a seamless shopping experience for a modern luxury audience.",
     monthly: "624k",
     url: "/projects/isadora-online",
     logo: isadoraLogo,
@@ -70,6 +70,8 @@ const imageItems: ProjectItem[] = [
     src: design3,
     alt: "design-3",
     title: "UseSnearkers",
+    description:
+      "A sneaker marketplace connecting buyers and sellers with a premium shopping flow designed for discovery, trust, and conversion at scale.",
     monthly: "54k",
     url: "/projects/use-sneakers",
     logo: halkLogoDark,
@@ -78,6 +80,8 @@ const imageItems: ProjectItem[] = [
     src: design4,
     alt: "design-4",
     title: "Easy English School",
+    description:
+      "A clear and approachable website for an English school, focused on guiding students through programs with confidence, clarity, and strong visual hierarchy.",
     monthly: "5k",
     url: "/projects/isadora-online",
     logo: halkLogoDark,
@@ -86,6 +90,8 @@ const imageItems: ProjectItem[] = [
     src: design5,
     alt: "design-5",
     title: "Code Legends",
+    description:
+      "A product experience crafted for a developer-focused brand, balancing technical credibility with a bold visual identity built to stand out.",
     url: "/projects/isadora-online",
     logo: halkLogoDark,
   },
@@ -95,9 +101,11 @@ const imageItems: ProjectItem[] = [
 function ProjectCard({
   item,
   isLightBg,
+  onSelect,
 }: {
   item: ProjectItem;
   isLightBg: boolean;
+  onSelect: (item: ProjectItem) => void;
 }) {
   const fit = item.fit ?? "contain";
   const objectClass = fit === "contain" ? "object-contain" : "object-cover";
@@ -114,8 +122,11 @@ function ProjectCard({
 
   return (
     <div className={`flex shrink-0 flex-col gap-4 ${CARD_WIDTH}`}>
-      <article
-        className={`relative overflow-hidden rounded-2xl group ${CARD_MEDIA} bg-transparent`}
+      <button
+        type="button"
+        onClick={() => onSelect(item)}
+        aria-label={`Open preview for ${item.title}`}
+        className={`relative overflow-hidden rounded-2xl group ${CARD_MEDIA} cursor-pointer bg-transparent text-left`}
       >
         {item.video ? (
           <div className="absolute inset-0 overflow-hidden">
@@ -141,26 +152,8 @@ function ProjectCard({
             sizes="(max-width: 768px) 80vw, 36vw"
           />
         ) : null}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/80 group-hover:opacity-100">
-          <div className="flex flex-col items-center justify-center gap-2 px-4 text-center">
-            <span className="text-3xl font-bold italic bg-gradient-to-br from-[#00C8FF] to-[#004E63] bg-clip-text text-transparent md:text-4xl">
-              {item.title}
-            </span>
-            {item.monthly && (
-              <span className="text-xs text-white">
-                +<span className="text-2xl">{item.monthly}</span> monthly
-                visitors
-              </span>
-            )}
-            <Link
-              href={item.url}
-              className="mt-2 text-sm uppercase tracking-widest text-white underline-offset-4 hover:underline"
-            >
-              See more
-            </Link>
-          </div>
-        </div>
-      </article>
+        <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
+      </button>
 
       <div className="flex flex-col gap-2">
         <Image
@@ -185,6 +178,10 @@ export default function Description() {
   const [scrollDistance, setScrollDistance] = useState(0);
   const [sectionHeight, setSectionHeight] = useState<number | null>(null);
   const [isLightBg, setIsLightBg] = useState(true);
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
+    null
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useLayoutEffect(() => {
     const track = trackRef.current;
@@ -230,6 +227,11 @@ export default function Description() {
     );
   });
 
+  const handleSelectProject = (item: ProjectItem) => {
+    setSelectedProject(item);
+    setIsModalOpen(true);
+  };
+
   return (
     <section
       ref={containerRef}
@@ -254,10 +256,21 @@ export default function Description() {
           className="flex w-max items-end gap-5 pl-[6vw] pr-[6vw] md:gap-8"
         >
           {imageItems.map((item) => (
-            <ProjectCard key={item.alt} item={item} isLightBg={isLightBg} />
+            <ProjectCard
+              key={item.alt}
+              item={item}
+              isLightBg={isLightBg}
+              onSelect={handleSelectProject}
+            />
           ))}
         </motion.div>
       </motion.div>
+
+      <ProjectPreviewModal
+        item={selectedProject}
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
     </section>
   );
 }
