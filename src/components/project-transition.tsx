@@ -99,7 +99,7 @@ export function ProjectTransitionProvider({
       });
       router.push(href);
       timeoutRef.current = window.setTimeout(() => {
-        overlayRef.current && clearOverlay();
+        if (overlayRef.current) clearOverlay();
       }, 1800);
     },
     [clearOverlay, lenis, router]
