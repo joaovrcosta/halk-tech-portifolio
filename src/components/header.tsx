@@ -61,10 +61,9 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-[80] w-full mix-blend-difference transition-all duration-300 ${scrolling
-        ? "px-6 pb-4 pt-8 lg:px-16 lg:pb-3 lg:pt-8"
-        : "px-4 pb-4 pt-8 lg:px-28 lg:pb-6 lg:pt-10"
-        }`}
+      className={`fixed top-0 left-0 z-[80] w-full px-[6vw] mix-blend-difference transition-all duration-300 ${
+        scrolling ? "pb-4 pt-8" : "pb-4 pt-8 lg:pb-6 lg:pt-10"
+      }`}
     >
       <div className="flex items-center justify-between">
         <Link href="/">

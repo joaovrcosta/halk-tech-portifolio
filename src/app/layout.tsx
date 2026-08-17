@@ -3,6 +3,7 @@ import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { ProjectTransitionProvider } from "@/components/project-transition";
 
 const exo2 = Exo_2({
   subsets: ["latin"],
@@ -26,8 +27,10 @@ export default function RootLayout({
         className={`${exo2.variable} ${exo2.className} antialiased`}
       >
         <SmoothScroll>
-          <Header />
-          {children}
+          <ProjectTransitionProvider>
+            <Header />
+            {children}
+          </ProjectTransitionProvider>
         </SmoothScroll>
       </body>
     </html>
