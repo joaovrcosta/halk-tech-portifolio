@@ -1,29 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins, Instrument_Sans } from "next/font/google";
+import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const exo2 = Exo_2({
   subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
-});
-
-const intrumentSans = Instrument_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-intrument-sans",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-exo-2",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${intrumentSans.variable} antialiased`}
+        className={`${exo2.variable} ${exo2.className} antialiased`}
       >
         <SmoothScroll>
           <Header />
