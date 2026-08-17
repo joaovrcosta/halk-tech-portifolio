@@ -2,29 +2,56 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { featuredProjects, type Project } from "@/lib/projects-data";
 import { useProjectTransition } from "@/components/project-transition";
+import { useLenis } from "lenis/react";
 import { cn } from "@/lib/utils";
 
 function ProjectCard({
   project,
   index,
+  isActive,
   isDimmed,
-  onHover,
+  pointerRef,
 }: {
   project: Project;
   index: number;
+  isActive: boolean;
   isDimmed: boolean;
-  onHover: (slug: string | null) => void;
+  pointerRef: { current: { x: number; y: number } };
 }) {
   const mediaRef = useRef<HTMLDivElement>(null);
   const { openProject } = useProjectTransition();
   const href = `/projects/${project.slug}`;
   const objectClass = project.fit === "contain" ? "object-contain" : "object-cover";
   const [viewCursor, setViewCursor] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const syncCursor = () => {
+      if (!isActive || !mediaRef.current) return;
+      const rect = mediaRef.current.getBoundingClientRect();
+      const point = pointerRef.current;
+      if (!point) return;
+      const { x, y } = point;
+      if (
+        x < rect.left ||
+        x > rect.right ||
+        y < rect.top ||
+        y > rect.bottom
+      ) {
+        return;
+      }
+      setViewCursor({ x: x - rect.left, y: y - rect.top });
+    };
+
+    window.addEventListener("scroll", syncCursor, { capture: true, passive: true });
+    return () => {
+      window.removeEventListener("scroll", syncCursor, { capture: true });
+    };
+  }, [isActive, pointerRef]);
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (
@@ -63,10 +90,9 @@ function ProjectCard({
       }}
       className={cn(
         "group/card relative min-w-0 transition-[filter,opacity] duration-500 ease-out",
-        isDimmed && "md:opacity-35 md:blur-[6px]"
+        isDimmed && "md:opacity-70 md:blur-[2px]"
       )}
-      onMouseEnter={() => onHover(project.slug)}
-      onMouseLeave={() => onHover(null)}
+      data-project-slug={project.slug}
     >
       <Link
         href={href}
@@ -167,6 +193,35 @@ function ProjectCard({
 
 export default function Description() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
+  const pointerRef = useRef({ x: 0, y: 0 });
+  const hoveredSlugRef = useRef<string | null>(null);
+
+  const updateHovered = () => {
+    const { x, y } = pointerRef.current;
+    const element = document.elementFromPoint(x, y);
+    const card = element?.closest("[data-project-slug]");
+    const slug = card?.getAttribute("data-project-slug") ?? null;
+    if (hoveredSlugRef.current === slug) return;
+    hoveredSlugRef.current = slug;
+    setHoveredSlug(slug);
+  };
+
+  useLenis(updateHovered);
+
+  useEffect(() => {
+    const onPointerMove = (event: PointerEvent) => {
+      pointerRef.current = { x: event.clientX, y: event.clientY };
+      updateHovered();
+    };
+
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("scroll", updateHovered, { capture: true, passive: true });
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("scroll", updateHovered, { capture: true });
+    };
+  }, []);
 
   return (
     <section
@@ -204,8 +259,9 @@ export default function Description() {
                 key={project.slug}
                 project={project}
                 index={columnIndex + index * 2}
+                isActive={hoveredSlug === project.slug}
                 isDimmed={hoveredSlug !== null && hoveredSlug !== project.slug}
-                onHover={setHoveredSlug}
+                pointerRef={pointerRef}
               />
             ))}
           </div>

@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { useLenis } from "lenis/react";
 import { getProjectBySlug } from "@/lib/projects-data";
 import { useProjectTransition } from "@/components/project-transition";
+import { SplitText } from "@/components/split-text";
 
 export default function ProjectCaseStudy({ slug }: { slug: string }) {
   const project = getProjectBySlug(slug);
@@ -44,35 +45,37 @@ export default function ProjectCaseStudy({ slug }: { slug: string }) {
           </Link>
         </motion.div>
 
-        <motion.h1
-          initial={isEntering ? { opacity: 0, y: 24 } : false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[18ch] text-4xl font-medium leading-[1.05] tracking-[-0.04em] md:text-6xl lg:text-7xl"
-        >
-          {project.title}
-        </motion.h1>
+        <h1 className="max-w-[18ch] text-4xl font-medium leading-[1.05] tracking-[-0.04em] md:text-6xl lg:text-7xl">
+          <SplitText text={project.title} delay={isEntering ? 0.28 : 0.08} />
+        </h1>
 
-        <motion.div
-          initial={isEntering ? { opacity: 0, y: 20 } : false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-start md:justify-between md:gap-16"
-        >
+        <div className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-start md:justify-between md:gap-16">
           <p className="max-w-[540px] text-[15px] leading-relaxed text-white/70 md:text-base">
-            {project.description}
+            <SplitText
+              text={project.description}
+              by="word"
+              delay={isEntering ? 0.42 : 0.22}
+              stagger={0.035}
+            />
           </p>
           <ul className="flex flex-wrap gap-2 md:max-w-[420px] md:justify-end">
-            {project.tags.map((tag) => (
-              <li
+            {project.tags.map((tag, index) => (
+              <motion.li
                 key={tag}
+                initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{
+                  duration: 0.55,
+                  delay: (isEntering ? 0.55 : 0.35) + index * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="border border-white/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white"
               >
                 {tag}
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </motion.div>
+        </div>
       </div>
 
       <div
