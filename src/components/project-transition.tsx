@@ -137,13 +137,13 @@ export function ProjectTransitionProvider({
       {overlay ? (
         <>
           <motion.div
-            className="pointer-events-none fixed inset-0 z-[70] bg-[#030303]"
+            className="pointer-events-none fixed inset-0 z-[70] bg-[#0e0e0e]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
           />
           <motion.div
-            className="pointer-events-none fixed z-[71] overflow-hidden bg-[#030303]"
+            className="pointer-events-none fixed z-[71] overflow-hidden bg-[#0e0e0e]"
             initial={overlay.from}
             animate={overlay.to ?? overlay.from}
             transition={{

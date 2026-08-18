@@ -140,7 +140,7 @@
     z-index: 0;
     border-radius: 9999px;
     border: 2px solid transparent;
-    background: linear-gradient(90deg, transparent, #030303, transparent, #00C8FF, transparent);
+    background: linear-gradient(90deg, transparent, #0e0e0e, transparent, #00C8FF, transparent);
     background-size: 200% auto;
     background-clip: border-box;
     animation: light-border 8s linear infinite;
@@ -159,7 +159,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-exo-2), Helvetica, sans-serif;
-    background-color: #030303;
+    background-color: #0e0e0e;
     color: #fff
   }
 }

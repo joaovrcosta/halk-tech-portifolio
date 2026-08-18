@@ -28,7 +28,7 @@ export default function ProjectCaseStudy({ slug }: { slug: string }) {
   const objectClass = project.fit === "contain" ? "object-contain" : "object-cover";
 
   return (
-    <article data-header-theme="dark" className="bg-[#030303] text-white">
+    <article data-header-theme="dark" className="bg-[#0e0e0e] text-white">
       <div className="px-[6vw] pt-32 pb-10 md:pt-40 md:pb-14">
         <motion.div
           initial={isEntering ? { opacity: 0, y: 12 } : false}

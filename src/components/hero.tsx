@@ -65,7 +65,7 @@ export function Hero() {
     <section ref={sectionRef} className="relative h-[240vh]">
       <div
         data-header-theme="dark"
-        className="sticky top-0 h-screen w-full overflow-hidden bg-[#030303]"
+        className="sticky top-0 h-screen w-full overflow-hidden bg-[#0e0e0e]"
       >
         <motion.div
           style={{ opacity: raysOpacity }}
@@ -83,7 +83,7 @@ export function Hero() {
             mouseInfluence={0.06}
             noiseAmount={0.04}
           />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#5F5F5F33_0%,_#030303cc_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#5F5F5F33_0%,_#0e0e0ecc_70%)]" />
         </motion.div>
 
         <motion.div

@@ -14,7 +14,7 @@ export default function ProjectsPage() {
       fallback={
         <section
           data-header-theme="dark"
-          className="min-h-screen bg-[#030303]"
+          className="min-h-screen bg-[#0e0e0e]"
         />
       }
     >

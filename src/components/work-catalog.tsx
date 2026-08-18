@@ -2,29 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { useMemo, useRef, type MouseEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, X } from "lucide-react";
 import {
   parseWorkFilterId,
   projects,
   projectMatchesFilter,
-  workFilters,
   type Project,
-  type WorkFilterId,
 } from "@/lib/projects-data";
 import { useProjectTransition } from "@/components/project-transition";
 import { cn } from "@/lib/utils";
-
-function buildWorkHref(filterId: WorkFilterId, query: string) {
-  const params = new URLSearchParams();
-  if (filterId !== "all") params.set("category", filterId);
-  const trimmed = query.trim();
-  if (trimmed) params.set("q", trimmed);
-  const qs = params.toString();
-  return qs ? `/projects?${qs}` : "/projects";
-}
 
 function CatalogCard({
   project,
@@ -147,46 +135,29 @@ function CatalogCard({
 }
 
 export function WorkCatalog() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const activeFilter = parseWorkFilterId(searchParams.get("category"));
-  const queryFromUrl = searchParams.get("q") ?? "";
-  const [query, setQuery] = useState(queryFromUrl);
-
-  useEffect(() => {
-    setQuery(queryFromUrl);
-  }, [queryFromUrl]);
-
-  useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      if (query.trim() === queryFromUrl.trim()) return;
-      router.replace(buildWorkHref(activeFilter, query), { scroll: false });
-    }, 250);
-
-    return () => window.clearTimeout(timeout);
-  }, [activeFilter, query, queryFromUrl, router]);
+  const query = (searchParams.get("q") ?? "").trim().toLowerCase();
 
   const filteredProjects = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
-
     return projects.filter((project) => {
       if (!projectMatchesFilter(project, activeFilter)) return false;
-      if (!normalizedQuery) return true;
+      if (!query) return true;
 
       const haystack = [project.title, project.description, ...project.tags]
         .join(" ")
         .toLowerCase();
 
-      return haystack.includes(normalizedQuery);
+      return haystack.includes(query);
     });
   }, [activeFilter, query]);
 
   return (
     <section
       data-header-theme="dark"
-      className="relative min-h-screen bg-[#030303] px-[6vw] pb-28 pt-32 md:pb-36 md:pt-40"
+      className="relative min-h-screen bg-[#0e0e0e] px-[6vw] pb-28 pt-44 md:pb-36 md:pt-48"
     >
-      <div className="mb-12 flex flex-col gap-8 md:mb-16 md:flex-row md:items-end md:justify-between">
+      <div className="mb-16 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.22em] text-white/45">
             Archive / {String(filteredProjects.length).padStart(2, "0")}
@@ -199,56 +170,6 @@ export function WorkCatalog() {
           A catalog of digital experiences, brand platforms, and e-commerce
           systems built to convert and stay memorable.
         </p>
-      </div>
-
-      <div className="sticky top-20 z-30 mb-12 border-b border-white/10 bg-[#030303]/90 py-4 backdrop-blur-md md:top-24 md:mb-16">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-wrap gap-2">
-            {workFilters.map((filter) => {
-              const isActive = activeFilter === filter.id;
-
-              return (
-                <Link
-                  key={filter.id}
-                  href={buildWorkHref(filter.id, query)}
-                  scroll={false}
-                  className={cn(
-                    "rounded-full border px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] transition-colors",
-                    isActive
-                      ? "border-[#00C8FF] bg-[#00C8FF] text-black"
-                      : "border-white/20 text-white/70 hover:border-white hover:text-white"
-                  )}
-                >
-                  {filter.label}
-                </Link>
-              );
-            })}
-          </div>
-
-          <label className="relative flex w-full items-center lg:max-w-[280px]">
-            <Search
-              className="pointer-events-none absolute left-3 size-4 text-white/40"
-              strokeWidth={1.75}
-            />
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search by project or category"
-              className="w-full rounded-full border border-white/20 bg-transparent py-2 pl-10 pr-10 text-[13px] text-white outline-none placeholder:text-white/35 focus:border-[#00C8FF]"
-            />
-            {query ? (
-              <button
-                type="button"
-                onClick={() => setQuery("")}
-                aria-label="Clear search"
-                className="absolute right-3 text-white/40 transition-colors hover:text-white"
-              >
-                <X className="size-4" strokeWidth={1.75} />
-              </button>
-            ) : null}
-          </label>
-        </div>
       </div>
 
       {filteredProjects.length ? (

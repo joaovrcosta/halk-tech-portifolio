@@ -1,7 +1,15 @@
 import React from "react";
 import Content from "./content";
 
-export default function Footer() {
+export default function Footer({ reveal = true }) {
+  if (!reveal) {
+    return (
+      <div id="site-footer" className="relative z-10 min-h-[720px]">
+        <Content />
+      </div>
+    );
+  }
+
   return (
     <div
       id="site-footer"

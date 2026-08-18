@@ -28,7 +28,7 @@ const socials = [
 
 export default function Content() {
   return (
-    <div className="flex h-full w-full flex-col bg-[#030303] px-[6vw] pb-8 pt-28 text-[#e8e8e8] md:pb-10 md:pt-32 lg:pt-36">
+    <div className="flex h-full w-full flex-col bg-[#0e0e0e] px-[6vw] pb-8 pt-28 text-[#e8e8e8] md:pb-10 md:pt-32 lg:pt-36">
       <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-8">
         <div>
           <p className="mb-5 text-[11px] uppercase tracking-[0.18em] text-white/45">

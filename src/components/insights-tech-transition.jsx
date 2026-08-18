@@ -36,7 +36,7 @@ export default function InsightsTechTransition() {
           style={{ opacity: overlayOpacity }}
           className="absolute inset-0 will-change-[opacity]"
         >
-          <div className="absolute inset-0 bg-black" />
+          <div className="absolute inset-0 bg-[#0e0e0e]" />
 
           <motion.div
             className="absolute inset-0 bg-white"

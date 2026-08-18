@@ -91,7 +91,7 @@ export default function Stacks() {
     <section
       ref={sectionRef}
       data-header-theme="dark"
-      className="relative bg-[#0a0a0a] pb-[50vh]"
+      className="relative bg-[#0e0e0e] pb-[50vh]"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35]"

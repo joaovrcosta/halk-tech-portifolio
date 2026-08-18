@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import halkLogo from "../../public/halksolutions.svg";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLenis } from "lenis/react";
+import { cn } from "@/lib/utils";
+import { WorkFilters } from "@/components/work-filters";
 
 type MenuEntry =
   | { kind: "link"; href: string; label: string }
@@ -43,29 +47,73 @@ const menuItemVariants = {
 };
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolling, setScrolling] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const hiddenRef = useRef(false);
+  const hideEnabledRef = useRef(false);
+
+  hideEnabledRef.current = pathname === "/projects" && !menuOpen;
+  const isWorkCatalog = pathname === "/projects";
+
+  useLenis(({ scroll, direction }) => {
+    const nextScrolling = scroll > 50;
+    setScrolling((prev) => (prev === nextScrolling ? prev : nextScrolling));
+
+    let nextHidden = hiddenRef.current;
+
+    if (!hideEnabledRef.current || scroll < 96) {
+      nextHidden = false;
+    } else if (direction > 0) {
+      nextHidden = true;
+    } else if (direction < 0) {
+      nextHidden = false;
+    }
+
+    if (hiddenRef.current !== nextHidden) {
+      hiddenRef.current = nextHidden;
+      setHidden(nextHidden);
+    }
+  });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolling(window.scrollY > 50);
-    };
+    hiddenRef.current = false;
+    setHidden(false);
+  }, [pathname]);
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  useEffect(() => {
+    document.documentElement.classList.toggle("header-hidden", hidden);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      document.documentElement.classList.remove("header-hidden");
     };
-  }, []);
+  }, [hidden]);
 
   return (
     <header
-      className={`fixed top-0 left-0 z-[80] w-full px-[6vw] mix-blend-difference transition-all duration-300 ${
-        scrolling ? "pb-4 pt-8" : "pb-4 pt-8 lg:pb-6 lg:pt-10"
-      }`}
+      className={cn(
+        "fixed top-0 left-0 z-[80] w-full",
+        isWorkCatalog
+          ? "border-b border-white/10 bg-[#0e0e0e]/70 backdrop-blur-xl"
+          : "px-[6vw] mix-blend-difference transition-transform duration-300",
+        !isWorkCatalog && (scrolling ? "pb-4 pt-8" : "pb-4 pt-8 lg:pb-6 lg:pt-10"),
+        !isWorkCatalog && hidden && "-translate-y-[120%] pointer-events-none"
+      )}
     >
-      <div className="flex items-center justify-between">
+      <div
+        className={cn(
+          isWorkCatalog && "overflow-hidden transition-[grid-template-rows] duration-300 grid",
+          isWorkCatalog && (hidden ? "grid-rows-[0fr]" : "grid-rows-[1fr]")
+        )}
+      >
+        <div className={cn(isWorkCatalog && "min-h-0 overflow-hidden")}>
+          <div
+            className={cn(
+              "flex items-center justify-between",
+              isWorkCatalog && "px-[6vw] pb-3 pt-8"
+            )}
+          >
         <Link href="/">
           <Image
             src={halkLogo}
@@ -101,7 +149,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="left"
-              className="w-[90%] max-w-none border-none bg-black p-0 gap-0 sm:max-w-full [&>button:last-child]:hidden"
+              className="w-[90%] max-w-none border-none bg-[#0e0e0e] p-0 gap-0 sm:max-w-full [&>button:last-child]:hidden"
             >
               <div className="flex h-full flex-col px-8 py-10">
                 <motion.div
@@ -176,7 +224,17 @@ export function Header() {
             </SheetContent>
           </Sheet>
         </div>
+          </div>
+        </div>
       </div>
+
+      {isWorkCatalog ? (
+        <div className="px-[6vw] py-3">
+          <Suspense fallback={<div className="h-10" />}>
+            <WorkFilters />
+          </Suspense>
+        </div>
+      ) : null}
     </header>
   );
 }

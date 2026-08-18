@@ -36,7 +36,7 @@ export function BrandMarquee() {
   return (
     <section
       aria-label="Brands we work with"
-      className="overflow-hidden bg-[#030303] py-10 md:py-14"
+      className="overflow-hidden bg-[#0e0e0e] py-10 md:py-14"
     >
       <div
         className="overflow-hidden"

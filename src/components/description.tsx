@@ -227,7 +227,7 @@ export default function Description() {
   return (
     <section
       data-header-theme="dark"
-      className="relative bg-[#030303] px-[6vw] pb-28 pt-20 md:pb-40 md:pt-28"
+      className="relative bg-[#0e0e0e] px-[6vw] pb-28 pt-20 md:pb-40 md:pt-28"
     >
       <div className="mb-16 flex items-end justify-between gap-6 md:mb-24">
         <h2 className="text-5xl font-medium leading-[0.92] tracking-[-0.04em] text-white md:text-7xl lg:text-[5.5rem]">

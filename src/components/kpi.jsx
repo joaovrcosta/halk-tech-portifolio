@@ -131,7 +131,7 @@ export default function Kpi() {
     <section
       ref={sectionRef}
       data-header-theme="dark"
-      className="border-y border-white/10 bg-black"
+      className="border-y border-white/10 bg-[#0e0e0e]"
     >
       <div className="grid grid-cols-1 md:grid-cols-3">
         {metrics.map((metric, index) => (

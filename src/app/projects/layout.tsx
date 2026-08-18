@@ -9,7 +9,7 @@ export default function RootLayout({
     <div>
       <div>
         <div>
-          {children} <Footer />
+        {children} <Footer reveal={false} />
         </div>
       </div>
     </div>
