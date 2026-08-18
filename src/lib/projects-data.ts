@@ -5,7 +5,7 @@ import caterpillarCover from "../../public/images/projects/caterpillar/capa.webp
 import isadoraCover from "../../public/images/projects/isadora-online/capa.jpg";
 import sidThailandCover from "../../public/images/projects/sidthailand/captura-1.png";
 import vansCover from "../../public/images/projects/vans/capa.jpg";
-import willsCover from "../../public/images/projects/wills-group/website-img.png";
+import dashInCover from "../../public/images/projects/wills-group/capa-dashin.png";
 
 export const TRUTH_LIES_VIDEO =
   "https://assets.ign.com/videos/zencoder/2024/05/23/1920/6471e8f5-5da5-4eed-a591-bd530703e4cb-1716469774.mp4";
@@ -187,21 +187,58 @@ export const projects: Project[] = [
   },
   {
     slug: "wills-group",
-    title: "Wills Group",
+    title: "Dash In",
     description:
-      "The Dash In official website for The Wills Group features a modern interface and a campaign where users discover premium food rewards, emphasizing customer convenience.",
+      "A convenience-retail experience for Dash In, built to turn everyday stops — food, fuel, car wash, and rewards — into a campaign-led digital journey.",
     tags: ["WEB DESIGN", "BRAND"],
-    cover: willsCover,
+    cover: dashInCover,
     featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    projectUrl: "https://www.dashin.com/",
     screenshots: [
+      "/images/projects/wills-group/capa-dashin.png",
       "/images/projects/wills-group/laptop-img.png",
       "/images/projects/wills-group/smartphone-img.jpg",
       "/images/projects/wills-group/website-img.png",
     ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Dash In is the Wills Group convenience brand — fresh food, fuel, car wash, and rewards, built around the idea of taking on the day. The website was designed to make locations, menus, and everyday errands feel brighter and easier, from all-day breakfast to finding the nearest store.",
   },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export const workFilters = [
+  { id: "all", label: "All" },
+  { id: "e-commerce", label: "E-commerce" },
+  { id: "web-design", label: "Web Design" },
+  { id: "brand", label: "Brand" },
+  { id: "motion", label: "Motion" },
+  { id: "product", label: "Product" },
+] as const;
+
+export type WorkFilterId = (typeof workFilters)[number]["id"];
+
+const FILTER_TAG_MAP: Record<Exclude<WorkFilterId, "all">, string[]> = {
+  "e-commerce": ["E-COMMERCE"],
+  "web-design": ["WEB DESIGN"],
+  brand: ["BRAND", "VISUAL IDENTITY", "CREATIVE DIRECTION"],
+  motion: ["MOTION"],
+  product: ["PRODUCT UX"],
+};
+
+export function parseWorkFilterId(value: string | null | undefined): WorkFilterId {
+  if (value && workFilters.some((filter) => filter.id === value)) {
+    return value as WorkFilterId;
+  }
+  return "all";
+}
+
+export function projectMatchesFilter(project: Project, filterId: WorkFilterId) {
+  if (filterId === "all") return true;
+  return project.tags.some((tag) => FILTER_TAG_MAP[filterId].includes(tag));
+}
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
