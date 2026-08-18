@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import halkMark from "../../public/halk.svg";
 import { Instagram, Linkedin, Send } from "lucide-react";
 
 function XIcon({ className }) {
@@ -26,7 +28,7 @@ const socials = [
 
 export default function Content() {
   return (
-    <div className="flex h-full w-full flex-col justify-between bg-[#030303] px-[6vw] py-10 text-[#e8e8e8] md:py-14">
+    <div className="flex h-full w-full flex-col bg-[#030303] px-[6vw] pb-8 pt-28 text-[#e8e8e8] md:pb-10 md:pt-32 lg:pt-36">
       <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-8">
         <div>
           <p className="mb-5 text-[11px] uppercase tracking-[0.18em] text-white/45">
@@ -102,11 +104,17 @@ export default function Content() {
         </div>
       </div>
 
-      <h2 className="mt-16 select-none text-[22vw] font-medium leading-[0.8] tracking-[-0.06em] text-white md:mt-10 md:text-[20vw]">
-        HALK
-      </h2>
+      <div className="mt-10 flex min-h-0 flex-1 items-end md:mt-8">
+        <Image
+          src={halkMark}
+          alt="halk"
+          className="h-auto max-h-full w-full select-none object-contain object-left-bottom"
+          sizes="88vw"
+          priority
+        />
+      </div>
 
-      <div className="mt-8 flex flex-col gap-3 text-[10px] uppercase tracking-[0.16em] text-white/45 md:mt-4 md:flex-row md:items-center md:justify-between">
+      <div className="mt-6 flex flex-col gap-3 text-[10px] uppercase tracking-[0.16em] text-white/45 md:mt-4 md:flex-row md:items-center md:justify-between">
         <div className="flex gap-6">
           <Link href="#" className="transition-opacity hover:text-white">
             Privacy policy

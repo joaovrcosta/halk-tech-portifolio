@@ -1,4 +1,5 @@
 import Intro from "@/components/intro";
+import { BrandMarquee } from "@/components/brand-marquee";
 import Description from "@/components/description";
 import Section from "@/components/section";
 import Kpi from "@/components/kpi";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <main>
       <Intro />
+      <BrandMarquee />
       <Description />
       <Section />
       <Kpi />

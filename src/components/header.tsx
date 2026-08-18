@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import halkLogoWhite from "../../public/halk-logo.svg";
+import halkLogo from "../../public/halksolutions.svg";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -67,7 +67,12 @@ export function Header() {
     >
       <div className="flex items-center justify-between">
         <Link href="/">
-          <Image src={halkLogoWhite} alt="Halk" height={24} />
+          <Image
+            src={halkLogo}
+            alt="halksolutions"
+            height={24}
+            className="h-5 w-auto md:h-6"
+          />
         </Link>
 
         <ul className="hidden items-center space-x-10 text-[16px] font-extralight text-white md:flex">
