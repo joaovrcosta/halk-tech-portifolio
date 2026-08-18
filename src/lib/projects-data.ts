@@ -1,10 +1,10 @@
 import type { StaticImageData } from "next/image";
 import design1 from "../../public/projects/projeto-img-1.png";
-import design2 from "../../public/images/design-2.png";
-import design3 from "../../public/images/design-3.png";
-import design4 from "../../public/images/design-4.png";
-import design5 from "../../public/images/design-5.png";
 import design6 from "../../public/images/design-6.png";
+import caterpillarCover from "../../public/images/projects/caterpillar/capa.webp";
+import isadoraCover from "../../public/images/projects/isadora-online/capa.jpg";
+import sidThailandCover from "../../public/images/projects/sidthailand/captura-1.png";
+import vansCover from "../../public/images/projects/vans/capa.jpg";
 import willsCover from "../../public/images/projects/wills-group/website-img.png";
 
 export const TRUTH_LIES_VIDEO =
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     description:
       "A refined e-commerce platform for Argentine women's fashion, combining elegance, performance, and a seamless shopping experience for a modern luxury audience.",
     tags: ["E-COMMERCE", "VISUAL IDENTITY", "WEB DESIGN"],
-    cover: design2,
+    cover: isadoraCover,
     featured: true,
     layout: { span: 5, aspect: "aspect-[4/5]" },
     logo: "/images/isadora-logo.svg",
@@ -117,15 +117,15 @@ export const projects: Project[] = [
       "Isadora Online is a store dedicated to luxury Argentine fashion, bringing sophistication, authenticity, and elegance to women seeking exclusive pieces. With a refined curation, the brand blends tradition and contemporary trends, offering clothing and accessories that reflect the unique style and charm of Argentine fashion.",
   },
   {
-    slug: "use-sneakers",
-    title: "UseSneakers",
+    slug: "vans",
+    title: "Vans",
     description:
-      "A sneaker marketplace connecting buyers and sellers with a premium shopping flow designed for discovery, trust, and conversion at scale.",
+      "A high-energy e-commerce experience for Vans Chile, built to turn street culture, product discovery, and seasonal campaigns into a conversion-focused shopping journey.",
     tags: ["E-COMMERCE", "PRODUCT UX", "WEB DESIGN"],
-    cover: design3,
+    cover: vansCover,
     featured: true,
     layout: { span: 7, offset: true, aspect: "aspect-[16/10]" },
-    logo: "/images/use-sneakers-logo.svg",
+    logo: "/vans-logo.svg",
     technologies: [
       "React",
       "Next.js",
@@ -135,43 +135,55 @@ export const projects: Project[] = [
       "Sanity CMS",
       "Styled Components",
       "GraphQL",
-      "Prisma",
-      "NextAuth",
       "SEO",
       "Sentry",
       "Algolia",
       "Zustand",
       "Jest",
     ],
-    projectUrl: "https://www.modausesneaker.com/shop",
+    projectUrl: "https://www.vans.cl/",
     screenshots: [
-      "/images/projects/use-sneakers/use-sneakers-print-1.png",
-      "/images/projects/use-sneakers/use-sneakers-print-2.png",
-      "/images/projects/use-sneakers/use-sneakers-print-3.png",
+      "/images/projects/vans/captura-1.png",
+      "/images/projects/vans/captura-2.png",
     ],
     briefTitle: "THE BRIEF",
     briefDescription:
-      "UseSneakers is a brand specialized in the curation and sale of exclusive and rare sneakers, focusing on serving both enthusiasts and discerning collectors. More than just an e-commerce platform, UseSneakers is a true hub for those seeking unique pieces that combine style, authenticity, and cultural value.",
+      "Vans is an iconic streetwear and footwear brand rooted in skate, BMX, and youth culture. The Chile store was designed to translate that attitude into a digital experience — from campaign-led hero moments to a frictionless path from product discovery to checkout.",
   },
   {
-    slug: "easy-english-school",
-    title: "Easy English School",
+    slug: "sidthailand",
+    title: "SID Thailand",
     description:
-      "A clear and approachable website for an English school, focused on guiding students through programs with confidence, clarity, and strong visual hierarchy.",
+      "A premium digital experience for a Phuket real estate group, built to present developments, lifestyle, and investment opportunities with cinematic clarity.",
     tags: ["WEB DESIGN", "BRAND"],
-    cover: design4,
+    cover: sidThailandCover,
     featured: true,
     layout: { span: 7, aspect: "aspect-[16/10]" },
+    projectUrl: "https://sidthailand.com/",
+    screenshots: ["/images/projects/sidthailand/captura-1.png"],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "SID Thailand is a development company shaping residential and commercial real estate in Phuket. The website was designed to communicate a 360° property offering — from landmark districts to investment journeys — with a cinematic, high-end presence that matches the ambition of building the future of the island.",
   },
   {
-    slug: "code-legends",
-    title: "Code Legends",
+    slug: "caterpillar",
+    title: "Caterpillar",
     description:
-      "A product experience crafted for a developer-focused brand, balancing technical credibility with a bold visual identity built to stand out.",
-    tags: ["PRODUCT UX", "VISUAL IDENTITY", "WEB DESIGN"],
-    cover: design5,
+      "A rugged e-commerce experience for CAT Chile, built to turn workwear heritage, seasonal campaigns, and product discovery into a conversion-focused shopping journey.",
+    tags: ["E-COMMERCE", "PRODUCT UX", "WEB DESIGN"],
+    cover: caterpillarCover,
     featured: true,
     layout: { span: 5, offset: true, aspect: "aspect-[4/5]" },
+    logo: "/cat-logo.svg",
+    projectUrl: "https://www.shopcaterpillar.cl/",
+    screenshots: [
+      "/images/projects/caterpillar/captura-cat-1.png",
+      "/images/projects/caterpillar/captura-cat-2.png",
+      "/images/projects/caterpillar/captura-cat-3.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Caterpillar is a global workwear and footwear brand known for toughness, utility, and an unmistakable yellow-and-black identity. The Chile store was designed to carry that industrial attitude into a digital experience — from campaign-led hero moments to a clear path from product discovery to checkout.",
   },
   {
     slug: "wills-group",

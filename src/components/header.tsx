@@ -19,7 +19,7 @@ const menuEntries: MenuEntry[] = [
   { kind: "label", label: "Projects" },
   { kind: "link", href: "/projects/the-truth-lies", label: "The Truth Lies" },
   { kind: "link", href: "/projects/isadora-online", label: "Isadora Online" },
-  { kind: "link", href: "/projects/use-sneakers", label: "Use Sneakers" },
+  { kind: "link", href: "/projects/vans", label: "Vans" },
   { kind: "link", href: "#", label: "Contact" },
 ];
 

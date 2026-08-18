@@ -98,6 +98,7 @@ export default function ProjectCaseStudy({ slug }: { slug: string }) {
             alt={project.title}
             fill
             priority
+            quality={100}
             className={objectClass}
             sizes="100vw"
           />

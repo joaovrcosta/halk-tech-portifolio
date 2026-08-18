@@ -27,35 +27,32 @@
     "briefDescription": "Isadora Online is a store dedicated to luxury Argentine fashion, bringing sophistication, authenticity, and elegance to women seeking exclusive pieces. With a refined curation, the brand blends tradition and contemporary trends, offering clothing and accessories that reflect the unique style and charm of Argentine fashion. More than just a store, it s a premium fashion experience for those who value quality and timeless design."
   },
   {
-    "id": "use-sneakers",
-    "title": "UseSneakers",
-    "description": "UseSneakers is a sneaker marketplace that connects buyers and sellers, offering a wide range of new and used sneakers. The platform provides a safe and easy way to buy and sell sneakers online.",
+    "id": "vans",
+    "title": "Vans Chile",
+    "description": "A high-energy e-commerce experience for Vans Chile, built to turn street culture, product discovery, and seasonal campaigns into a conversion-focused shopping journey.",
     "technologies": [
       "React",
       "Next.js",
-      "Javacript",
+      "Javascript",
       "Tailwind CSS",
       "Shopify Storefront",
       "Sanity CMS",
       "Styled Components",
       "GraphQL",
-      "Prisma",
-      "NextAuth",
       "SEO",
       "Sentry",
       "Algolia",
       "Zustand",
       "Jest"
     ],
-    "projectUrl": "https://www.modausesneaker.com/shop",
-    "logo": "/images/use-sneakers-logo.svg",
+    "projectUrl": "https://www.vans.cl/",
+    "logo": "/vans-logo.svg",
     "screenshots": [
-      "/images/projects/use-sneakers/use-sneakers-print-1.png",
-      "/images/projects/use-sneakers/use-sneakers-print-2.png",
-      "/images/projects/use-sneakers/use-sneakers-print-3.png"
+      "/images/projects/vans/captura-1.png",
+      "/images/projects/vans/captura-2.png"
     ],
     "briefTitle": "THE BRIEF",
-    "briefDescription": "UseSneakers is a brand specialized in the curation and sale of exclusive and rare sneakers, focusing on serving both enthusiasts and discerning collectors. More than just an e-commerce platform, UseSneakers is a true hub for those seeking unique pieces that combine style, authenticity, and cultural value."
+    "briefDescription": "Vans is an iconic streetwear and footwear brand rooted in skate, BMX, and youth culture. The Chile store was designed to translate that attitude into a digital experience — from campaign-led hero moments to a frictionless path from product discovery to checkout."
   },
   {
     "id": "the-truth-lies",
@@ -88,7 +85,12 @@
     "id": "luxury-fashion",
     "title": "Luxury Fashion",
     "description": "Luxury Fashion is an exclusive online store for high-end fashion enthusiasts, offering a premium shopping experience.",
-    "technologies": ["React", "Next.js", "Shopify", "Tailwind CSS"],
+    "technologies": [
+      "React",
+      "Next.js",
+      "Shopify",
+      "Tailwind CSS"
+    ],
     "projectUrl": "https://luxuryfashion.com/",
     "logo": "/images/luxury-logo.svg",
     "screenshots": [

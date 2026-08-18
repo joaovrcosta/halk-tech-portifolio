@@ -135,11 +135,12 @@ function ProjectCard({
               src={project.cover}
               alt={project.title}
               fill
+              quality={100}
               className={cn(
                 objectClass,
                 "transition-transform duration-700 ease-out group-hover/card:scale-[1.04]"
               )}
-              sizes="(max-width: 768px) 100vw, 60vw"
+              sizes="(max-width: 768px) 100vw, 90vw"
             />
           ) : null}
 
