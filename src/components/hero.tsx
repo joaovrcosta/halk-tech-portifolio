@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Hls from "hls.js";
 import {
   motion,
   useMotionValueEvent,
@@ -11,7 +10,7 @@ import {
 import LightRays from "./LightRays";
 import { SplitText } from "@/components/split-text";
 
-const HLS_SRC = "https://www.produx.design/videos/HeroHLS/showreel.m3u8";
+const HERO_VIDEO_SRC = "/0818.mp4";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -41,25 +40,15 @@ export function Hero() {
     const video = videoRef.current;
     if (!video) return;
 
-    let hls: Hls | null = null;
-
-    if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = HLS_SRC;
-    } else if (Hls.isSupported()) {
-      hls = new Hls({ enableWorker: true });
-      hls.loadSource(HLS_SRC);
-      hls.attachMedia(video);
-    }
-
     const play = () => {
-      video.play().catch(() => { });
+      video.play().catch(() => {});
     };
 
     video.addEventListener("canplay", play);
+    play();
 
     return () => {
       video.removeEventListener("canplay", play);
-      hls?.destroy();
     };
   }, []);
 
@@ -109,9 +98,11 @@ export function Hero() {
         >
           <video
             ref={videoRef}
+            src={HERO_VIDEO_SRC}
             muted
             loop
             playsInline
+            autoPlay
             preload="auto"
             className="h-full w-full object-cover"
           />
