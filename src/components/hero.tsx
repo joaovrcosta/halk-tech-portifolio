@@ -41,7 +41,7 @@ export function Hero() {
     if (!video) return;
 
     const play = () => {
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     };
 
     video.addEventListener("canplay", play);
@@ -116,17 +116,27 @@ export function Hero() {
           }}
           className="relative z-20 flex w-full items-start px-[6vw] pt-32 md:pt-36 lg:pt-40"
         >
-          <div className="flex w-full flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-12">
-            <h1 className="max-w-[720px] text-[40px] leading-tight text-white md:text-5xl md:leading-[1.15] lg:text-[64px] lg:leading-[1.1]">
+          <div className="flex w-full flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-12">
+            <h1 className="max-w-[720px] font-semibold text-[34px] leading-tight text-white md:text-5xl md:leading-[1.15] lg:text-[64px] lg:leading-[1.1]">
               <SplitText text="You feel the brand, we build the experience" />
             </h1>
-            <p className="max-w-[340px] text-[16px] leading-relaxed text-[#b6b6b6] md:mb-1 md:text-right md:text-[15px]">
-              <SplitText
-                text="More than just a beautiful design, we create experiences that convert visitors into customers. Your website can’t just be a business card, it needs to do the selling for you."
-                by="word"
-                delay={0.35}
-                stagger={0.035}
-              />
+            <p className="max-w-[340px] text-[15px] leading-relaxed text-[#b6b6b6] md:mb-1 md:text-right md:text-[15px]">
+              <span className="md:hidden">
+                <SplitText
+                  text="Transforming startups, SMEs, and industry giants into digital leaders."
+                  by="word"
+                  delay={0.35}
+                  stagger={0.035}
+                />
+              </span>
+              <span className="hidden md:inline">
+                <SplitText
+                  text="More than just a beautiful design, we create experiences that convert visitors into customers. Your website can’t just be a business card, it needs to do the selling for you."
+                  by="word"
+                  delay={0.35}
+                  stagger={0.035}
+                />
+              </span>
             </p>
           </div>
         </motion.div>

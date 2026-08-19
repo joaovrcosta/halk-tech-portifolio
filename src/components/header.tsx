@@ -107,13 +107,13 @@ export function Header() {
         )}
       >
         <div className={cn(isWorkCatalog && "min-h-0 overflow-hidden")}>
-          <div className="flex items-center justify-between px-[6vw] pb-3 pt-8">
-            <Link href="/">
+          <div className="flex h-12 items-center justify-between px-[6vw] pb-3 pt-6 md:h-auto md:pt-8">
+            <Link href="/" className="flex items-center">
               <Image
                 src={halkLogo}
                 alt="Halk Solutions"
                 height={24}
-                className="h-5 w-auto md:h-6"
+                className="block h-5 w-auto md:h-6"
               />
             </Link>
 
@@ -146,14 +146,17 @@ export function Header() {
               </li>
             </ul>
 
-            <div className="md:hidden">
+            <div className="flex items-center md:hidden">
               <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-                <SheetTrigger aria-label="Open menu">
-                  <Menu className="h-6 w-6 cursor-pointer text-white" />
+                <SheetTrigger
+                  aria-label="Open menu"
+                  className="inline-flex size-8 shrink-0 items-center justify-center p-0 text-white outline-none"
+                >
+                  <Menu className="size-5" strokeWidth={1.75} />
                 </SheetTrigger>
                 <SheetContent
                   side="left"
-                  className="w-[90%] max-w-none border-none bg-[#0e0e0e] p-0 gap-0 sm:max-w-full [&>button:last-child]:hidden"
+                  className="z-[211] w-[90%] max-w-none border-none bg-[#0e0e0e] p-0 gap-0 sm:max-w-full [&>button:last-child]:hidden"
                 >
                   <div className="flex h-full flex-col px-8 py-10">
                     <motion.div
