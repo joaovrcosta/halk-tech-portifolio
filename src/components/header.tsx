@@ -48,7 +48,6 @@ const menuItemVariants = {
 
 export function Header() {
   const pathname = usePathname();
-  const [scrolling, setScrolling] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const hiddenRef = useRef(false);
@@ -58,9 +57,6 @@ export function Header() {
   const isWorkCatalog = pathname === "/projects";
 
   useLenis(({ scroll, direction }) => {
-    const nextScrolling = scroll > 50;
-    setScrolling((prev) => (prev === nextScrolling ? prev : nextScrolling));
-
     let nextHidden = hiddenRef.current;
 
     if (!hideEnabledRef.current || scroll < 96) {
@@ -96,8 +92,7 @@ export function Header() {
         "fixed top-0 left-0 z-[80] w-full",
         isWorkCatalog
           ? "border-b border-white/10 bg-[#0e0e0e]/70 backdrop-blur-xl"
-          : "px-[6vw] mix-blend-difference transition-transform duration-300",
-        !isWorkCatalog && (scrolling ? "pb-4 pt-8" : "pb-4 pt-8 lg:pb-6 lg:pt-10"),
+          : "mix-blend-difference",
         !isWorkCatalog && hidden && "-translate-y-[120%] pointer-events-none"
       )}
     >
@@ -108,12 +103,7 @@ export function Header() {
         )}
       >
         <div className={cn(isWorkCatalog && "min-h-0 overflow-hidden")}>
-          <div
-            className={cn(
-              "flex items-center justify-between",
-              isWorkCatalog && "px-[6vw] pb-3 pt-8"
-            )}
-          >
+          <div className="flex items-center justify-between px-[6vw] pb-3 pt-8">
         <Link href="/">
           <Image
             src={halkLogo}
