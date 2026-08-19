@@ -6,6 +6,7 @@ import isadoraCover from "../../public/images/projects/isadora-online/capa.jpg";
 import sidThailandCover from "../../public/images/projects/sidthailand/captura-1.png";
 import vansCover from "../../public/images/projects/vans/capa.jpg";
 import dashInCover from "../../public/images/projects/wills-group/capa-dashin.png";
+import farmRioCover from "../../public/images/projects/farmrio/farmrio-print-1.png";
 
 export const TRUTH_LIES_VIDEO =
   "https://assets.ign.com/videos/zencoder/2024/05/23/1920/6471e8f5-5da5-4eed-a591-bd530703e4cb-1716469774.mp4";
@@ -136,6 +137,37 @@ export const projects: Project[] = [
     briefTitle: "THE BRIEF",
     briefDescription:
       "Isadora Online is a store dedicated to luxury Argentine fashion, bringing sophistication, authenticity, and elegance to women seeking exclusive pieces. With a refined curation, the brand blends tradition and contemporary trends, offering clothing and accessories that reflect the unique style and charm of Argentine fashion.",
+  },
+  {
+    slug: "farmrio",
+    title: "Farm Rio",
+    description:
+      "A vibrant e-commerce experience for Farm Rio, built to turn tropical prints, seasonal drops, and Brazilian joy into a conversion-focused shopping journey.",
+    tags: ["E-COMMERCE", "PRODUCT UX", "WEB DESIGN"],
+    cover: farmRioCover,
+    featured: true,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "VTEX IO",
+      "GraphQL",
+      "Algolia",
+      "Sentry",
+      "Jest",
+    ],
+    projectUrl: "https://www.farmrio.com.br/",
+    screenshots: [
+      "/images/projects/farmrio/farmrio-print-1.png",
+      "/images/projects/farmrio/farmrio-print-2.png",
+      "/images/projects/farmrio/farmrio-print-3.png",
+      "/images/projects/farmrio/farmrio-print-4.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Farm Rio is a Brazilian fashion house known for tropical color, joyful prints, and a unmistakable Carioca spirit. The store was designed to carry that energy into a digital experience — from campaign-led hero moments and new-in drops to a clear path from product discovery to checkout.",
   },
   {
     slug: "vans",

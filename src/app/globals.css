@@ -153,6 +153,16 @@
 
 
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body[data-scroll-locked],
+  html[data-scroll-locked] {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }

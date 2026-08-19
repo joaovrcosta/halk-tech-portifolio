@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import halkMark from "../../public/halk.svg";
 import { Instagram, Linkedin, Send } from "lucide-react";
+import { useContactModal } from "@/components/contact-modal";
 
 function XIcon({ className }) {
   return (
@@ -15,7 +16,7 @@ function XIcon({ className }) {
 
 const menuLinks = [
   { href: "/projects", label: "Work" },
-  { href: "#", label: "About" },
+  { href: "/#about", label: "About" },
   { href: "#", label: "Contact" },
   { href: "/", label: "Home" },
 ];
@@ -27,6 +28,7 @@ const socials = [
 ];
 
 export default function Content() {
+  const { toggle: toggleContact } = useContactModal();
   return (
     <div className="flex h-full w-full flex-col bg-[#0e0e0e] px-[6vw] pb-8 pt-28 text-[#e8e8e8] md:pb-10 md:pt-32 lg:pt-36">
       <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-8">
@@ -35,15 +37,26 @@ export default function Content() {
             Menu/
           </p>
           <nav className="flex flex-col gap-2.5">
-            {menuLinks.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-[13px] uppercase tracking-[0.14em] text-white/85 transition-opacity hover:opacity-55"
-              >
-                [ {item.label} ]
-              </Link>
-            ))}
+            {menuLinks.map((item) =>
+              item.label === "Contact" ? (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={toggleContact}
+                  className="text-left text-[13px] uppercase tracking-[0.14em] text-white/85 transition-opacity hover:opacity-55"
+                >
+                  [ {item.label} ]
+                </button>
+              ) : (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-[13px] uppercase tracking-[0.14em] text-white/85 transition-opacity hover:opacity-55"
+                >
+                  [ {item.label} ]
+                </Link>
+              )
+            )}
           </nav>
         </div>
 

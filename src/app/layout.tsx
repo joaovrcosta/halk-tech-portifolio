@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ProjectTransitionProvider } from "@/components/project-transition";
 import { JsonLd } from "@/components/json-ld";
+import { ContactModalProvider, ContactModalBlur } from "@/components/contact-modal";
 import {
   defaultDescription,
   defaultOpenGraph,
@@ -64,10 +65,12 @@ export default function RootLayout({
       <body className={`${exo2.variable} ${exo2.className} antialiased`}>
         <JsonLd data={organizationGraph()} />
         <SmoothScroll>
-          <ProjectTransitionProvider>
-            <Header />
-            {children}
-          </ProjectTransitionProvider>
+          <ContactModalProvider>
+            <ProjectTransitionProvider>
+              <Header />
+              <ContactModalBlur>{children}</ContactModalBlur>
+            </ProjectTransitionProvider>
+          </ContactModalProvider>
         </SmoothScroll>
       </body>
     </html>

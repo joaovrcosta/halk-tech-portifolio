@@ -129,6 +129,7 @@ export default function Kpi() {
 
   return (
     <section
+      id="about"
       ref={sectionRef}
       data-header-theme="dark"
       className="border-y border-white/10 bg-[#0e0e0e]"

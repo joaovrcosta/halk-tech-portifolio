@@ -18,6 +18,19 @@ export const sameAs = [
   "https://instagram.com/halksolutions",
 ] as const;
 
+export const calendlyUrl =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/halksolutions";
+
+export function getCalendlyEmbedUrl() {
+  const url = new URL(calendlyUrl);
+  url.searchParams.set("hide_gdpr_banner", "1");
+  url.searchParams.set("hide_event_type_details", "1");
+  url.searchParams.set("background_color", "1a1a1a");
+  url.searchParams.set("text_color", "ffffff");
+  url.searchParams.set("primary_color", "8a8a8a");
+  return url.toString();
+}
+
 export function absoluteUrl(path = "/") {
   if (path.startsWith("http://") || path.startsWith("https://")) {
     return path;
