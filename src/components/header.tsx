@@ -107,7 +107,7 @@ export function Header() {
         <Link href="/">
           <Image
             src={halkLogo}
-            alt="halksolutions"
+            alt="Halk Solutions"
             height={24}
             className="h-5 w-auto md:h-6"
           />

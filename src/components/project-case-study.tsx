@@ -143,11 +143,11 @@ export default function ProjectCaseStudy({ slug }: { slug: string }) {
       {project.screenshots?.length ? (
         <div className="space-y-4 px-[6vw] pb-8">
           <h2 className="mb-8 text-2xl font-medium md:text-3xl">About the Project</h2>
-          {project.screenshots.map((image) => (
+          {project.screenshots.map((image, index) => (
             <Image
               key={image}
               src={image}
-              alt={project.title}
+              alt={`${project.title} — website screenshot ${index + 1}`}
               width={1600}
               height={900}
               quality={100}

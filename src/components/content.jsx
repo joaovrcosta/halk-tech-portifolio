@@ -107,7 +107,7 @@ export default function Content() {
       <div className="mt-10 flex min-h-0 flex-1 items-end md:mt-8">
         <Image
           src={halkMark}
-          alt="halk"
+          alt="Halk Solutions"
           className="h-auto max-h-full w-full select-none object-contain object-left-bottom"
           sizes="88vw"
           priority
