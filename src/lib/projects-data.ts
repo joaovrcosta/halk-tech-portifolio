@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
-import design1 from "../../public/projects/projeto-img-1.png";
 import design6 from "../../public/images/design-6.png";
+import normalIsBoringCover from "../../public/images/projects/normalisboring/captura-normal-boring-1.png";
 import caterpillarCover from "../../public/images/projects/caterpillar/capa.webp";
 import isadoraCover from "../../public/images/projects/isadora-online/capa.jpg";
 import sidThailandCover from "../../public/images/projects/sidthailand/captura-1.png";
@@ -41,11 +41,32 @@ export const projects: Project[] = [
     slug: "normal-is-boring",
     title: "Normal is Boring",
     description:
-      "A bold digital experience built to challenge conventions and turn brand storytelling into something memorable, expressive, and impossible to ignore.",
+      "A cinematic digital experience for a Galician residential brand, built to present architecture, lifestyle, and exclusive developments with the same quiet luxury as the homes themselves.",
     tags: ["CREATIVE DIRECTION", "WEB DESIGN", "MOTION"],
-    cover: design1,
+    cover: normalIsBoringCover,
     featured: true,
     layout: { span: 7, aspect: "aspect-[16/10]" },
+    technologies: [
+      "HTML5",
+      "Typescript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "GSAP",
+      "Lenis",
+      "Framer Motion",
+      "Sanity CMS",
+      "WebGL",
+    ],
+    projectUrl: "https://normalisboring.es/",
+    screenshots: [
+      "/images/projects/normalisboring/captura-normal-boring-1.png",
+      "/images/projects/normalisboring/captura-normal-boring-2.png",
+      "/images/projects/normalisboring/captura-normal-boring-3.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Normal is Boring is a Galician residential brand building homes that last — contemporary volumes, craftsmanship, and a quiet luxury that refuses passing trends. The website was designed to carry that attitude online: living spaces that challenge the ordinary, from La Solana in Oleiros to upcoming developments, with a cinematic presence that matches the architecture.",
   },
   {
     slug: "the-truth-lies",
