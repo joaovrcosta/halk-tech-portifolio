@@ -7,6 +7,14 @@ import sidThailandCover from "../../public/images/projects/sidthailand/captura-1
 import vansCover from "../../public/images/projects/vans/capa.jpg";
 import dashInCover from "../../public/images/projects/wills-group/capa-dashin.png";
 import farmRioCover from "../../public/images/projects/farmrio/farmrio-print-1.png";
+import amanHotelCover from "../../public/images/projects/amanhotel/amanhotel-1.png";
+import thePodHotelCover from "../../public/images/projects/thepodhotel/thepodhotel-1.png";
+import hyattCover from "../../public/images/projects/hyatt/hyatt-1.png";
+import vinhaHotelCover from "../../public/images/projects/vinhahotel/vinha-hotel.png";
+import motorolaCover from "../../public/images/projects/motorolacl/motorola-1.png";
+import audioMusicaCover from "../../public/images/projects/audio-musica/audio-musica-1.png";
+import columbiaCover from "../../public/images/projects/columbia/columbia-1.png";
+import samsClubCover from "../../public/images/projects/sams-club/sams-club-1.png";
 
 export const TRUTH_LIES_VIDEO =
   "https://assets.ign.com/videos/zencoder/2024/05/23/1920/6471e8f5-5da5-4eed-a591-bd530703e4cb-1716469774.mp4";
@@ -43,7 +51,7 @@ export const projects: Project[] = [
     title: "Normal is Boring",
     description:
       "A cinematic digital experience for a Galician residential brand, built to present architecture, lifestyle, and exclusive developments with the same quiet luxury as the homes themselves.",
-    tags: ["CREATIVE DIRECTION", "WEB DESIGN", "MOTION"],
+    tags: ["ARCHITECTURE", "WEB DESIGN"],
     cover: normalIsBoringCover,
     featured: true,
     layout: { span: 7, aspect: "aspect-[16/10]" },
@@ -145,7 +153,7 @@ export const projects: Project[] = [
       "A vibrant e-commerce experience for Farm Rio, built to turn tropical prints, seasonal drops, and Brazilian joy into a conversion-focused shopping journey.",
     tags: ["E-COMMERCE", "PRODUCT UX", "WEB DESIGN"],
     cover: farmRioCover,
-    featured: true,
+    featured: false,
     layout: { span: 7, aspect: "aspect-[16/10]" },
     technologies: [
       "React",
@@ -208,7 +216,7 @@ export const projects: Project[] = [
     title: "SID Thailand",
     description:
       "A premium digital experience for a Phuket real estate group, built to present developments, lifestyle, and investment opportunities with cinematic clarity.",
-    tags: ["WEB DESIGN", "BRAND"],
+    tags: ["ARCHITECTURE", "BRAND"],
     cover: sidThailandCover,
     featured: true,
     layout: { span: 7, aspect: "aspect-[16/10]" },
@@ -243,7 +251,7 @@ export const projects: Project[] = [
     title: "Dash In",
     description:
       "A convenience-retail experience for Dash In, built to turn everyday stops — food, fuel, car wash, and rewards — into a campaign-led digital journey.",
-    tags: ["WEB DESIGN", "BRAND"],
+    tags: ["RESTAURANT", "BRAND"],
     cover: dashInCover,
     featured: false,
     layout: { span: 7, aspect: "aspect-[16/10]" },
@@ -258,27 +266,266 @@ export const projects: Project[] = [
     briefDescription:
       "Dash In is the Wills Group convenience brand — fresh food, fuel, car wash, and rewards, built around the idea of taking on the day. The website was designed to make locations, menus, and everyday errands feel brighter and easier, from all-day breakfast to finding the nearest store.",
   },
+  {
+    slug: "aman-hotel",
+    title: "Aman New York",
+    description:
+      "A quiet-luxury digital experience for Aman New York, built to present rooms, wellness, dining, and residences with the same stillness as the hotel itself.",
+    tags: ["HOTELS", "BRAND"],
+    cover: amanHotelCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "Contentful CMS",
+      "GSAP",
+      "Lenis",
+    ],
+    projectUrl: "https://www.aman.com/hotels-resorts/aman-new-york",
+    screenshots: [
+      "/images/projects/amanhotel/amanhotel-1.png",
+      "/images/projects/amanhotel/amanhotel-2.png",
+      "/images/projects/amanhotel/amanhotel-3.png",
+      "/images/projects/amanhotel/amanhotel-4.png",
+      "/images/projects/amanhotel/amanhotel-5.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Aman New York is a sanctuary above Crown Building — residences, wellness, dining, and a jazz club looking out over Manhattan. The website was designed to carry that quiet luxury online: gallery, accommodation, and reservation journeys with the same measured pace as the hotel.",
+  },
+  {
+    slug: "the-pod-hotel",
+    title: "The Pod Hotel",
+    description:
+      "A playful booking experience for Pod Hotels, built to turn compact NYC stays, neighborhood energy, and affordable rooms into a clear path from discovery to reserve.",
+    tags: ["HOTELS", "PRODUCT UX"],
+    cover: thePodHotelCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    technologies: [
+      "React",
+      "Next.js",
+      "Javascript",
+      "Tailwind CSS",
+      "Algolia",
+      "Mapbox",
+      "Sentry",
+    ],
+    projectUrl: "https://www.thepodhotel.com/",
+    screenshots: [
+      "/images/projects/thepodhotel/thepodhotel-1.png",
+      "/images/projects/thepodhotel/thepodhotel-2.png",
+      "/images/projects/thepodhotel/thepodhotel-3.png",
+      "/images/projects/thepodhotel/thepodhotel-4.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Pod Hotels reimagines New York stays as compact, social, and affordable — from Pod 39 in Murray Hill to a buzzing lobby built for urban nomads. The site was designed to make rooms, neighborhoods, and booking feel immediate: explore Midtown, unlock an offer, and reserve without friction.",
+  },
+  {
+    slug: "hyatt",
+    title: "Hyatt — The Chatwal",
+    description:
+      "A World of Hyatt booking experience for The Chatwal New York, built to present landmark architecture, The Lambs Club, and a theater-district stay with a clear path to reserve.",
+    tags: ["HOTELS", "BRAND"],
+    cover: hyattCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "Contentful CMS",
+      "Algolia",
+    ],
+    projectUrl:
+      "https://www.hyatt.com/the-unbound-collection-by-hyatt/en-US/nyctu-the-chatwal-new-york",
+    screenshots: [
+      "/images/projects/hyatt/hyatt-1.png",
+      "/images/projects/hyatt/hyatt-2.png",
+      "/images/projects/hyatt/hyatt-3.png",
+      "/images/projects/hyatt/hyatt-4.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "The Chatwal is an Unbound Collection by Hyatt hotel in a restored New York landmark — red awnings, The Lambs Club, and a stay built around theater-district glamour. The website was designed to carry that World of Hyatt presence online: rooms, dining, and a booking journey that feels as considered as the hotel.",
+  },
+  {
+    slug: "vinha-hotel",
+    title: "Vinha Boutique Hotel",
+    description:
+      "A cinematic digital experience for Vinha Boutique Hotel, built to present comfort, tastes, wellness, and unforgettable moments overlooking the Douro.",
+    tags: ["HOTELS", "BRAND"],
+    cover: vinhaHotelCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "GSAP",
+      "Lenis",
+      "Sanity CMS",
+    ],
+    projectUrl: "https://www.vinhaboutiquehotel.com/",
+    screenshots: [
+      "/images/projects/vinhahotel/vinha-hotel.png",
+      "/images/projects/vinhahotel/vinha-hotel-1.png",
+      "/images/projects/vinhahotel/vinha-hotel-2.png",
+      "/images/projects/vinhahotel/vinha-hotel-3.png",
+      "/images/projects/vinhahotel/vinha-hotel-4.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Vinha Boutique Hotel is a stay of quiet luxury by the Douro — pool, garden, and a pace built around comfort, tastes, indulgence, and events. The website was designed to carry that atmosphere online: atmospheric photography, a clear reservation flow, and a booking journey as considered as the hotel itself.",
+  },
+  {
+    slug: "motorola",
+    title: "Motorola",
+    description:
+      "A campaign-led e-commerce experience for Motorola Chile, built to turn smartphones, accessories, and partnerships like Formula 1 into a clear path from discovery to checkout.",
+    tags: ["E-COMMERCE", "PRODUCT UX"],
+    cover: motorolaCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    logo: "/motorola-logo.svg",
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "VTEX IO",
+      "Algolia",
+      "GraphQL",
+      "Sentry",
+    ],
+    projectUrl: "https://www.motorola.cl/",
+    screenshots: [
+      "/images/projects/motorolacl/motorola-1.png",
+      "/images/projects/motorolacl/motorola-2.png",
+      "/images/projects/motorolacl/motorola-3.png",
+      "/images/projects/motorolacl/motorola-4.png",
+      "/images/projects/motorolacl/motorola-5.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Motorola Chile is the official store for Razr, Edge, and Signature — plus accessories, motofertas, and campaign moments like Formula 1. The site was designed to make product discovery, promotions, and checkout feel as sharp as the hardware, from free shipping nationwide to interest-free installments.",
+  },
+  {
+    slug: "audio-musica",
+    title: "AudioMusica",
+    description:
+      "A high-volume e-commerce experience for AudioMusica, built to turn instruments, pro audio, and seasonal offers into a store-led shopping journey across Chile.",
+    tags: ["E-COMMERCE", "PRODUCT UX"],
+    cover: audioMusicaCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    logo: "/audio-musica-logo.svg",
+    technologies: [
+      "React",
+      "Next.js",
+      "Javascript",
+      "Tailwind CSS",
+      "VTEX IO",
+      "Algolia",
+      "Sentry",
+    ],
+    projectUrl: "https://www.audiomusica.com/",
+    screenshots: [
+      "/images/projects/audio-musica/audio-musica-1.png",
+      "/images/projects/audio-musica/audio-musica-2.png",
+      "/images/projects/audio-musica/audio-musica-3.png",
+      "/images/projects/audio-musica/audio-musica-4.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "AudioMusica is Chile’s go-to destination for instruments, pro audio, and accessories — from academy and club programs to openbox deals. The store was designed to make browsing, financing, and pickup feel immediate: search, stores, and a checkout built for high-intent shoppers.",
+  },
+  {
+    slug: "columbia",
+    title: "Columbia",
+    description:
+      "An outdoor e-commerce experience for Columbia Chile, built to turn technical apparel, footwear, and seasonal campaigns into a conversion-focused shopping journey.",
+    tags: ["E-COMMERCE", "PRODUCT UX"],
+    cover: columbiaCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    logo: "/columbia-svg.svg",
+    technologies: [
+      "React",
+      "Next.js",
+      "Javascript",
+      "Tailwind CSS",
+      "Shopify Storefront",
+      "Algolia",
+      "Sentry",
+    ],
+    projectUrl: "https://www.columbia.cl/",
+    screenshots: [
+      "/images/projects/columbia/columbia-1.png",
+      "/images/projects/columbia/columbia-2.png",
+      "/images/projects/columbia/columbia-3.png",
+      "/images/projects/columbia/columbia-4.png",
+      "/images/projects/columbia/columbia-5.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Columbia is an outdoor brand built around weather-ready apparel and footwear. The Chile store was designed to carry that attitude online — from campaign-led heroes like Titanium Dry Hike to a clear path from new arrivals and winter sale to checkout.",
+  },
+  {
+    slug: "sams-club",
+    title: "Sam's Club",
+    description:
+      "A membership e-commerce experience for Sam's Club Brazil, built to turn bulk grocery, Member’s Mark, and flash promotions into a high-intent shopping journey.",
+    tags: ["E-COMMERCE", "PRODUCT UX"],
+    cover: samsClubCover,
+    featured: false,
+    layout: { span: 7, aspect: "aspect-[16/10]" },
+    logo: "/sams-club-logo.svg",
+    technologies: [
+      "React",
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "VTEX IO",
+      "Algolia",
+      "GraphQL",
+      "Sentry",
+    ],
+    projectUrl: "https://www.samsclub.com.br/",
+    screenshots: [
+      "/images/projects/sams-club/sams-club-1.png",
+      "/images/projects/sams-club/sams-club-2.png",
+      "/images/projects/sams-club/sams-club-3.png",
+    ],
+    briefTitle: "THE BRIEF",
+    briefDescription:
+      "Sam's Club Brazil is a membership warehouse store — groceries, imports, Member’s Mark, and club benefits, built around volume and value. The website was designed to make departments, CEP-based assortment, and flash campaigns like 48 horas imperdíveis feel immediate, from search to checkout.",
+  },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
 
 export const workFilters = [
   { id: "all", label: "All" },
+  { id: "hotels", label: "Hotels" },
+  { id: "architecture", label: "Architecture" },
+  { id: "restaurant", label: "Restaurant" },
   { id: "e-commerce", label: "E-commerce" },
-  { id: "web-design", label: "Web Design" },
-  { id: "brand", label: "Brand" },
-  { id: "motion", label: "Motion" },
-  { id: "product", label: "Product" },
 ] as const;
 
 export type WorkFilterId = (typeof workFilters)[number]["id"];
 
 const FILTER_TAG_MAP: Record<Exclude<WorkFilterId, "all">, string[]> = {
+  hotels: ["HOTELS"],
+  architecture: ["ARCHITECTURE"],
+  restaurant: ["RESTAURANT"],
   "e-commerce": ["E-COMMERCE"],
-  "web-design": ["WEB DESIGN"],
-  brand: ["BRAND", "VISUAL IDENTITY", "CREATIVE DIRECTION"],
-  motion: ["MOTION"],
-  product: ["PRODUCT UX"],
 };
 
 export function parseWorkFilterId(value: string | null | undefined): WorkFilterId {
