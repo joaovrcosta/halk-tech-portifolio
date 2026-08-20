@@ -17,7 +17,6 @@ function XIcon({ className }) {
 const menuLinks = [
   { href: "/projects", label: "Work" },
   { href: "/#about", label: "About" },
-  { href: "#", label: "Contact" },
   { href: "/", label: "Home" },
 ];
 
@@ -65,9 +64,9 @@ export default function Content() {
             Studio/
           </p>
           <p className="text-[13px] leading-relaxed text-white/80">
-            Digital product studio
+            hello@halks.solutions
           </p>
-          <p className="mt-1 text-[13px] text-white/80">Brazil</p>
+          <p className="mt-1 text-[13px] text-white/80">Worldwide</p>
         </div>
 
         <div className="col-span-2 md:col-span-1">
